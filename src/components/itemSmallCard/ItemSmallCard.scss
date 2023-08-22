@@ -1,0 +1,18 @@
+.smallCard {
+    border: 2px solid #252525;
+    background-color: #F6F6F6;
+    border-radius: 4px;
+    width: 80vw;
+    padding: 6px;
+
+    &__details {
+        // display: flex;
+        // flex-direction: column;
+
+        &__img {
+            border-radius: 6px;
+            height: 140px;
+            box-shadow: 4px 2px 2px #E4062B;
+        }
+    }
+}

@@ -1,11 +1,28 @@
-import './App.css';
+import { useEffect, useState } from "react";
+import axios from "axios";
+import Navbar from "./components/navbar/Navbar";
+import "./App.css";
+import ItemSmallCard from "./components/itemSmallCard/ItemSmallCard";
 
 function App() {
-  return (
-    <div className="App">
-      MET Project
-    </div>
-  );
+  const API = process.env.REACT_APP_MET_API_URL;
+
+  const [itemIDs, setItemIDs] = useState({});
+
+  useEffect(() => {
+    console.log(API)
+    axios
+      .get(API)
+      .then(({ data }) => setItemIDs(data))
+      .catch((error) => console.log(error));
+  }, []);
+
+  return <div className="App">
+    <Navbar />
+    Live Items:
+  {itemIDs.total}
+  <ItemSmallCard />
+  </div>;
 }
 
 export default App;
