@@ -19,8 +19,11 @@ function App() {
 
   return <div className="App">
     <Navbar />
-    Live Items:
+    <div className="header">Live Items:
   {itemIDs.total}
+      </div>
+  <ItemSmallCard />
+  <ItemSmallCard />
   <ItemSmallCard />
   </div>;
 }

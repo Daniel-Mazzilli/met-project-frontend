@@ -2,17 +2,30 @@
     border: 2px solid #252525;
     background-color: #F6F6F6;
     border-radius: 4px;
-    width: 80vw;
-    padding: 6px;
+    width: 88vw;
+    padding: 10px 8px;
+    box-shadow: 5px 3px 3px #ce8490;
+    margin-bottom: 14px;
+    font-size: 14px;
 
     &__details {
-        // display: flex;
-        // flex-direction: column;
+        display: flex;
+        justify-content: space-between;
+        font-weight: 600;
+        column-gap: 20px;
+
+        &__fields {
+            display: grid;
+            &__bold {
+                font-weight: 400;
+                margin-left: 8px;
+            }
+        }
 
         &__img {
             border-radius: 6px;
             height: 140px;
-            box-shadow: 4px 2px 2px #E4062B;
+            // box-shadow: 3px 2px 2px #E4062B;
         }
     }
 }
