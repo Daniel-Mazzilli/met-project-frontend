@@ -7,9 +7,12 @@ function App() {
   return (
     <div className="App">
       <Navbar />
+      <div className="page">
       <ItemSmallCard />
       <ItemSmallCard />
       <ItemSmallCard />
+      </div>
+      
       <Footer />
     </div>
   );

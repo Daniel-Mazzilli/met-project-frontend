@@ -1,9 +1,24 @@
-footer {
-    background-color: #252525;
-    color: white;
-    width: 100vw;
-    position: absolute;
+.footer {
+    background-color: #F2F2F2;
+    color: #252525;
+    width: 96vw;
+    position: fixed;
     bottom: 0;
-    text-align: right;
-    font-size: 14px;
+    font-size: 16px;
+    padding: 3px 2vw;
+    display: flex;
+    justify-content: space-between;
+    // display: grid;
+    // grid-template-columns: 1fr 1fr;
+
+    &__creator:hover {
+        color: #E4062B;
+    }
+
+    &__items {
+        text-align: right;
+        &__count {
+            font-weight: 600;
+        }
+    }
 }

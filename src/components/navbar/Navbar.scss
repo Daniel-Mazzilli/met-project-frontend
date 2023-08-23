@@ -1,11 +1,12 @@
 .navbar {
+    position: fixed;
     background-color: #E4062B;
     color: #FFFFFF;
-    height: 60px;
-    font-size: 24px;
+    height: 55px;
+    font-size: 28px;
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100vw;
-    margin-bottom: 20px;
+    box-shadow: 0 2px 5px #252525;
 }
