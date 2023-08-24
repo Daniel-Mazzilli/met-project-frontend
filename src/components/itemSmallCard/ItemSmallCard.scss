@@ -15,14 +15,19 @@
         column-gap: 20px;
 
         &__button {
-            all:unset;
+            all: unset;
             font-size: 50px;
             font-weight: 400;
-            color: #00961C;
+            color: #ffff;
+            border-radius: 4px;
+            background-color: #E3072B;
+            text-align: center;
+            padding: 0 2px;
         }
 
         &__fields {
             display: grid;
+
             &__bold {
                 font-weight: 400;
                 margin-left: 8px;
@@ -31,8 +36,17 @@
 
         &__img {
             border-radius: 6px;
-            height: 100px;
-            // box-shadow: 3px 2px 2px #E4062B;
+            max-width: 100%;
+            justify-self: center;
+            padding-top: 4px;
+            margin-bottom: 4px;
         }
     }
+}
+
+.hiddenSection {
+    border-top: 2px dashed #E3072B;
+    padding-top: 8px;
+    margin-top: 8px;
+    display: grid;
 }

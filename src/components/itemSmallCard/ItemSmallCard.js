@@ -3,8 +3,9 @@ import axios from "axios";
 import "./ItemSmallCard.scss";
 
 export default function () {
-  const URL =
-    "https://collectionapi.metmuseum.org/public/collection/v1/objects/463315";
+    const URL = "https://collectionapi.metmuseum.org/public/collection/v1/objects/463315";
+
+//   const URL = "https://collectionapi.metmuseum.org/public/collection/v1/objects/23367";
 
   const [item, setItem] = useState({});
   const [showMore, setShowMore] = useState(false);
@@ -45,12 +46,26 @@ export default function () {
       )}
 
       {showMore && (
-        <div>
-          <div>
+        <div className="smallCard__details hiddenSection">
+          <div className="smallCard__details__fields">
             <div>
-              Date:
+              Item Date:
               <span className="smallCard__details__fields__bold">
                 {item.objectDate}
+              </span>
+            </div>
+
+            <div>
+              Medium:
+              <span className="smallCard__details__fields__bold">
+                {item.medium}
+              </span>
+            </div>
+
+            <div>
+              Dimensions:
+              <span className="smallCard__details__fields__bold">
+                {item.dimensions}
               </span>
             </div>
 
@@ -58,6 +73,13 @@ export default function () {
               Department:
               <span className="smallCard__details__fields__bold">
                 {item.department}
+              </span>
+            </div>
+
+            <div>
+              Culture:
+              <span className="smallCard__details__fields__bold">
+                {item.culture}
               </span>
             </div>
 
