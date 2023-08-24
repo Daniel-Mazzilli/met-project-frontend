@@ -14,6 +14,13 @@
         font-weight: 600;
         column-gap: 20px;
 
+        &__button {
+            all:unset;
+            font-size: 50px;
+            font-weight: 400;
+            color: #00961C;
+        }
+
         &__fields {
             display: grid;
             &__bold {

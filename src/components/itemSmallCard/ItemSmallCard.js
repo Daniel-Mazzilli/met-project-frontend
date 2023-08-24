@@ -7,6 +7,7 @@ export default function () {
     "https://collectionapi.metmuseum.org/public/collection/v1/objects/463315";
 
   const [item, setItem] = useState({});
+  const [showMore, setShowMore] = useState(false);
 
   useEffect(() => {
     axios
@@ -33,7 +34,19 @@ export default function () {
                 {item.artistDisplayName}
               </span>
             </div>
+          </div>
+          <button
+            className="smallCard__details__button"
+            onClick={() => setShowMore(!showMore)}
+          >
+            {showMore ? "-" : "+"}
+          </button>
+        </div>
+      )}
 
+      {showMore && (
+        <div>
+          <div>
             <div>
               Date:
               <span className="smallCard__details__fields__bold">
@@ -54,7 +67,6 @@ export default function () {
                 #{item.GalleryNumber}
               </span>
             </div>
-            
           </div>
 
           <img
