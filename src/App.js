@@ -12,7 +12,6 @@ function App() {
       <ItemSmallCard />
       <ItemSmallCard />
       </div>
-      
       <Footer />
     </div>
   );

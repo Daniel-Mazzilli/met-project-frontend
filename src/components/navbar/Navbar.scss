@@ -12,24 +12,41 @@
 
     &__img {
         position: absolute;
-        left: 4vw;
+        left: 5vw;
         height: 65%;
     }
 
     &__open {
         position: absolute;
-        // height: 100vh;
+        height: 90vh;
         top: 7vh;
         display: flex;
         // animation-name: navbar_animation;
         // animation-duration: 0.5s;
 
         &__content {
+            padding-top: 6%;
             color:#252525;
             width: 100vw;
-            height: 100vh;
             background-color: #FFFFFF;
+            // background-color: #be4d4d;
             opacity: 1;
+            padding-left: 10vw;
+            font-size: 26px;
+            line-height: 2.2;
+            // gap: 10px;
+
+            &__link {
+                color: rgb(113, 113, 225);
+                position: relative;
+                animation-name: links_enter;
+                animation-duration: 1.2s;
+            }
+            
+            @keyframes links_enter {
+            0%   {color: white; left: -300px}
+            100% {left: 0}
+            }
         }
 
         // &__cover {
