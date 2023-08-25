@@ -8,6 +8,7 @@ function App() {
     <div className="App">
       <Navbar />
       <div className="page">
+        UNDER CONSTRUCTION
       <ItemSmallCard />
       <ItemSmallCard />
       <ItemSmallCard />
