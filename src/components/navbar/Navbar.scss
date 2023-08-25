@@ -2,7 +2,7 @@
     position: fixed;
     background-color: #E4062B;
     color: #FFFFFF;
-    height: 55px;
+    height: 6.4vh;
     font-size: 30px;
     display: flex;
     justify-content: center;
@@ -18,25 +18,41 @@
 
     &__open {
         position: absolute;
-        height: 100vh;
-        // border: 2px solid green;
-        left: 0;
-        top: 0;
+        // height: 100vh;
+        top: 7vh;
         display: flex;
+        // animation-name: navbar_animation;
+        // animation-duration: 0.5s;
 
         &__content {
             color:#252525;
-            width: 84vw;
+            width: 100vw;
             height: 100vh;
             background-color: #FFFFFF;
             opacity: 1;
         }
 
-        &__cover {
-            width: 16vw;
-            background-color:#252525;
-            height: 100vh;
-            opacity: 0.2;
-        }
+        // &__cover {
+        //     width: 20vw;
+        //     background-color:#252525;
+        //     height: 100vh;
+        //     opacity: 0;
+        // }
     }
+
+    // &__open .show{
+    //     animation-name: navbar_animation;
+    //     animation-duration: 0.5s;
+    // }
+
+    // &__open .hide{
+    //     animation-name: navbar_animation;
+    //     animation-duration: 0.5s;
+    //     animation-direction: reverse;
+    // }
+
+    // @keyframes navbar_animation {
+    //     0%   {left: -600px}
+    //     100% {left: 0}
+    // }
 }
