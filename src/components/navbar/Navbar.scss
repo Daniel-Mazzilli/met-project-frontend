@@ -3,10 +3,16 @@
     background-color: #E4062B;
     color: #FFFFFF;
     height: 55px;
-    font-size: 28px;
+    font-size: 30px;
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100vw;
     box-shadow: 0 2px 5px #252525;
+
+    &__img {
+        position: absolute;
+        left: 4vw;
+        height: 65%;
+    }
 }
