@@ -9,9 +9,8 @@ export default function Footer() {
   const [itemIDs, setItemIDs] = useState({});
 
   useEffect(() => {
-    console.log(API);
     axios
-      .get(API)
+      .get(`${API}/objects`)
       .then(({ data }) => setItemIDs(data))
       .catch((error) => console.log(error));
   }, []);
