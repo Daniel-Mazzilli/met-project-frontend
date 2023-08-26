@@ -1,0 +1,31 @@
+.searchbar {
+    width: 92vw;
+
+    &__form {
+        width: 100%;
+        border: 2px solid var(--black);
+        border-radius: 4px;
+        display: grid;
+        grid-template-columns: 4fr 1fr;
+        background-color: var(--black);
+
+        &__input {
+            all: unset;
+            padding: 2px 8px;
+            background-color: var(--light-grey);
+        }
+
+        &__submit {
+            all: unset;
+            background-color: var(--black);
+            color: #ffff;
+            text-align: center;
+        }
+    }
+
+    &__form:focus-within {
+        border: 2px solid var(--blue);
+    }
+
+    
+}

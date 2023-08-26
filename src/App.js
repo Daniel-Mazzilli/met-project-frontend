@@ -1,6 +1,7 @@
 import Navbar from "./components/navbar/Navbar";
 import Footer from "./components/footer/Footer";
 import "./App.css";
+import Searchbar from "./components/searchbar/Searchbar";
 import ItemSmallCard from "./components/itemSmallCard/ItemSmallCard";
 
 function App() {
@@ -9,9 +10,11 @@ function App() {
       <Navbar />
       <div className="page">
         UNDER CONSTRUCTION
-      <ItemSmallCard />
-      <ItemSmallCard />
-      <ItemSmallCard />
+        <Searchbar />
+        <br />
+        <ItemSmallCard />
+        <ItemSmallCard />
+        <ItemSmallCard />
       </div>
       <Footer />
     </div>
