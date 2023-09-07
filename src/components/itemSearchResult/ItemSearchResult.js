@@ -28,6 +28,9 @@ export default function ItemSearchResult({
           window.scrollTo(0, 0);
         }}
       />
+      {!itemDetails.primaryImageSmall && !itemDetails.primaryImage && <div className="itemSearchResult__name">
+        {itemDetails.title}
+        </div>}
     </div>
   );
 }
