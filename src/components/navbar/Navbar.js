@@ -29,7 +29,9 @@ export default function Navbar() {
           </div>
           <div
             className="navbar__open__cover"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            onClick={() => {
+              setIsMenuOpen(!isMenuOpen);
+            }}
           ></div>
         </div>
       )}

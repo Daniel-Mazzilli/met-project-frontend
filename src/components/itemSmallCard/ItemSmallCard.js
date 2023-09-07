@@ -2,13 +2,13 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import "./ItemSmallCard.scss";
 
-export default function ({highlight}) {
+export default function ({highlight, showMore, setShowMore}) {
   const API = process.env.REACT_APP_MET_API_URL;
   // const itemID = "463315";
   // const itemID = "23367";
 
   const [item, setItem] = useState({});
-  const [showMore, setShowMore] = useState(false);
+  // const [showMore, setShowMore] = useState(false);
 
   useEffect(() => {
     axios
@@ -67,7 +67,7 @@ export default function ({highlight}) {
               </span>
             </div>
 
-            <div>
+            <div className="smallCard__details__fields__dimensions">
               Dimensions:
               <span className="smallCard__details__fields__bold">
                 {item.dimensions}

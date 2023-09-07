@@ -33,6 +33,11 @@
                 font-weight: 400;
                 margin-left: 8px;
             }
+
+            &__dimensions {
+                max-height: 84px;
+                overflow-y: auto;
+            }
         }
 
         &__img {

@@ -12,6 +12,7 @@ export default function Searchbar() {
   const [displayedIDs, setDisplayedIDs] = useState([]);
   const [pagination, setPagination] = useState(0);
   const [highlight, setHighlight] = useState(null);
+  const [showMore, setShowMore] = useState(false);
 
   const handleChange = (event) => {
     setSearchInput(event.target.value);
@@ -72,13 +73,17 @@ export default function Searchbar() {
         <div className="searchbar__results">
           {searchResults.length} search results for:{" "}
           <span className="searchbar__results__bold">{searchHeader}</span>
-          <ItemSmallCard highlight={highlight || searchResults[0]} />
+          <ItemSmallCard highlight={highlight || searchResults[0]} 
+          showMore={showMore}
+          setShowMore={setShowMore}
+          />
           <div className="searchbar__results__items">
             {displayedIDs.map((e) => (
               <ItemSearchResult
                 key={e}
                 itemID={e}
                 setHighlight={setHighlight}
+                setShowMore={setShowMore}
               />
             ))}
           </div>
