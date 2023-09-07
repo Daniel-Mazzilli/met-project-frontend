@@ -28,9 +28,17 @@
         background-color: var(--blue);
     }
 
-    &__results__items{
-        display: grid;
-        grid-template-columns: 1fr 1fr;
+    &__results{
+        font-size: 18px;
+        
+        &__bold{
+            font-weight: 600;
+        }
+    
+        &__items{
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
     }
 
     

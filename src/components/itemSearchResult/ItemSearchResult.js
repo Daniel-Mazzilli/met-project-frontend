@@ -15,7 +15,7 @@ export default function ItemSearchResult({itemID}) {
     }, [itemID])
     return (
         <div className="itemSearchResult">
-            <img className="itemSearchResult__img" src={itemDetails.primaryImageSmall} />
+            <img className="itemSearchResult__img" src={itemDetails.primaryImageSmall} alt="item"/>
         </div>
     )
 }
