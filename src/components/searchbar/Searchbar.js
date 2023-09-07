@@ -28,6 +28,7 @@ export default function Searchbar() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    setShowMore(false);
     if (searchInput !== "") {
       setSearchResults([]);
       setSearchHeader("");
