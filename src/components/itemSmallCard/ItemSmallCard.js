@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import noimage from "../../assets/no-image.png";
 import "./ItemSmallCard.scss";
 
-export default function ({highlight, showMore, setShowMore}) {
+export default function ({ highlight, showMore, setShowMore }) {
   const API = process.env.REACT_APP_MET_API_URL;
   // const itemID = "463315";
   // const itemID = "23367";
@@ -98,7 +99,7 @@ export default function ({highlight, showMore, setShowMore}) {
 
           <img
             className="smallCard__details__img"
-            src={item.primaryImageSmall}
+            src={item.primaryImageSmall || item.primaryImage || noimage}
             alt="item image"
           />
         </div>
