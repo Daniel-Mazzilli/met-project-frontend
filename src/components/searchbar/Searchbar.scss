@@ -28,5 +28,10 @@
         background-color: var(--blue);
     }
 
+    &__results__items{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
     
 }
