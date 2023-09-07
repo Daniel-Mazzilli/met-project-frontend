@@ -21,6 +21,7 @@ export default function Navbar() {
             <div className="navbar__open__content__link">Play</div>
             <div className="navbar__open__content__link">Search</div>
             <div className="navbar__open__content__link">Favorites</div>
+            <div className="navbar__open__content__link">Random</div>
             <div className="navbar__open__content__link">About</div>
             <div className="navbar__open__content__link">MET API</div>
             <div className="navbar__open__content__link">Visit</div>

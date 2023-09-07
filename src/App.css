@@ -9,6 +9,7 @@
 .page {
   margin-top: 70px;
   margin-bottom: 40px;
+  width: 90vw;
 }
 
 /* @media (prefers-reduced-motion: no-preference) {

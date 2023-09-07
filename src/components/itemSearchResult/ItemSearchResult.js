@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import "./ItemSearchResult.scss";
 
-export default function ItemSearchResult({itemID}) {
+export default function ItemSearchResult({itemID, setHighlight}) {
     const API = process.env.REACT_APP_MET_API_URL;
     const [itemDetails, setItemDetails] = useState({})
 
@@ -15,7 +15,7 @@ export default function ItemSearchResult({itemID}) {
     }, [itemID])
     return (
         <div className="itemSearchResult">
-            <img className="itemSearchResult__img" src={itemDetails.primaryImageSmall} alt="item"/>
+            <img className="itemSearchResult__img" src={itemDetails.primaryImageSmall} alt="item" onClick={() => setHighlight(itemID)}/>
         </div>
     )
 }

@@ -2,9 +2,9 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import "./ItemSmallCard.scss";
 
-export default function () {
+export default function ({highlight}) {
   const API = process.env.REACT_APP_MET_API_URL;
-  const itemID = "463315";
+  // const itemID = "463315";
   // const itemID = "23367";
 
   const [item, setItem] = useState({});
@@ -12,10 +12,10 @@ export default function () {
 
   useEffect(() => {
     axios
-      .get(`${API}/objects/${itemID}`)
+      .get(`${API}/objects/${highlight}`)
       .then(({ data }) => setItem(data))
       .catch((err) => console.log(err));
-  }, []);
+  }, [highlight]);
 
   return (
     <div className="smallCard">

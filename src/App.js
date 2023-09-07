@@ -11,9 +11,9 @@ function App() {
       <div className="page">
         <Searchbar />
         <br />
+        {/* <ItemSmallCard />
         <ItemSmallCard />
-        <ItemSmallCard />
-        <ItemSmallCard />
+        <ItemSmallCard /> */}
       </div>
       <Footer />
     </div>

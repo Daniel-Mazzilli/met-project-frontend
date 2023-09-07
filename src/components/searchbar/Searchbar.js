@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import ItemSearchResult from "../itemSearchResult/ItemSearchResult";
+import ItemSmallCard from "../itemSmallCard/ItemSmallCard";
 import "./Searchbar.scss";
 
 export default function Searchbar() {
@@ -10,21 +11,22 @@ export default function Searchbar() {
   const [searchResults, setSearchResults] = useState([]);
   const [displayedIDs, setDisplayedIDs] = useState([]);
   const [pagination, setPagination] = useState(0);
+  const [highlight, setHighlight] = useState(null);
 
   const handleChange = (event) => {
     setSearchInput(event.target.value);
   };
 
-  useEffect(()=>{
-    setPagination(0)
-  }, [searchInput])
+  useEffect(() => {
+    setPagination(0);
+  }, [searchInput]);
 
   useEffect(() => {
-
-  }, [pagination])
+    setHighlight(searchResults[8 * (pagination)])
+  }, [pagination]);
 
   const handleSubmit = (event) => {
-    event.preventDefault();    
+    event.preventDefault();
     if (searchInput !== "") {
       setSearchResults([]);
       setSearchHeader("");
@@ -35,17 +37,16 @@ export default function Searchbar() {
         .then(({ data }) => {
           setSearchResults(data.objectIDs);
           setSearchHeader(searchInput);
-          setDisplayedIDs(
-            data.objectIDs.slice(0, 8)
-          );
+          setDisplayedIDs(data.objectIDs.slice(0, 8));
+          setHighlight(data.objectIDs[0]);
           setSearchInput("");
         })
         .catch((err) => console.log(err));
     } else {
       setDisplayedIDs(
-        searchResults.slice(8*(pagination + 1), 8 * (pagination + 1) + 8)
+        searchResults.slice(8 * (pagination + 1), 8 * (pagination + 1) + 8)
       );
-      setPagination(pagination+1)
+      setPagination(pagination + 1);
     }
   };
 
@@ -71,9 +72,14 @@ export default function Searchbar() {
         <div className="searchbar__results">
           {searchResults.length} search results for:{" "}
           <span className="searchbar__results__bold">{searchHeader}</span>
+          <ItemSmallCard highlight={highlight || searchResults[0]} />
           <div className="searchbar__results__items">
             {displayedIDs.map((e) => (
-              <ItemSearchResult key={e} itemID={e} />
+              <ItemSearchResult
+                key={e}
+                itemID={e}
+                setHighlight={setHighlight}
+              />
             ))}
           </div>
         </div>
