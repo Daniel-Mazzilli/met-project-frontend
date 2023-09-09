@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Hamburger from "../../assets/hamburger_light.png";
 import CloseIcon from "../../assets/x_light.png";
+import Logo from "../../assets/METx_logo.png"
 import "./Navbar.scss";
 
 export default function Navbar() {
@@ -13,6 +14,7 @@ export default function Navbar() {
         src={isMenuOpen ? CloseIcon : Hamburger}
         alt="hamburger menu icon"
       />
+      <img className="navbar__logo" src={Logo} alt="logo" />
       METxplorer
       {isMenuOpen && (
         <div className="navbar__open">

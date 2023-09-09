@@ -2,18 +2,23 @@
     position: fixed;
     background-color: #E4062B;
     color: #FFFFFF;
-    height: 6.4vh;
+    height: 6vh;
     font-size: 30px;
     display: flex;
-    justify-content: center;
+    justify-content:flex-start ;
     align-items: center;
     width: 100vw;
     box-shadow: 0 2px 5px #252525;
+    padding-left: 5vw;
 
     &__img {
         position: absolute;
-        left: 5vw;
+        left: 85vw;
         height: 65%;
+    }
+
+    &__logo {
+        height: 100%;
     }
 
     &__open {
