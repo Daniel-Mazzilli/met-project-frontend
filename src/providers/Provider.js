@@ -1,7 +1,7 @@
 import { useContext, createContext, useState, useEffect } from "react";
 import axios from "axios";
-import Navbar from "./components/navbar/Navbar.js";
-import Footer from "./components/footer/Footer.js";
+import Navbar from "../components/navbar/Navbar.js";
+import Footer from "../components/footer/Footer.js";
 
 export const ContextData = createContext();
 export function useContextProvider() {
