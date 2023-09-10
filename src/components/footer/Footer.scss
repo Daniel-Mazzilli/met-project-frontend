@@ -1,22 +1,22 @@
 .footer {
-    background-color: #F2F2F2;
-    color: #252525;
+    background-color: var(--metx-light-grey);
+    color: var(--metx-dark-grey);
     width: 100vw;
+    // border: 2px solid green;
     position: fixed;
     bottom: 0;
     font-size: 16px;
-    padding: 1px 3vw;
+    padding: 1px 2vw;
     display: flex;
     justify-content: space-between;
-    // display: grid;
-    // grid-template-columns: 1fr 1fr;
+    height: 3vh;
 
-    &__creator:hover {
-        color: #E4062B;
+    &__logo {
+        height: 100%;
     }
 
     &__items {
-        text-align: right;
+        // text-align: right;
         &__count {
             font-weight: 600;
         }

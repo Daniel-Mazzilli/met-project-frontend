@@ -2,19 +2,18 @@
     position: fixed;
     background-color: var(--metx-red);
     color: var(--metx-light-grey);
-    height: 6vh;
-    font-size: 30px;
+    height: 5.5vh;
+    font-size: 32px;
     display: flex;
-    justify-content:flex-start ;
     align-items: center;
     width: 100vw;
     box-shadow: 0 2px 5px var(--metx-black);
-    padding-left: 6vw;
+    padding-left: 5vw;
 
     &__toggle {
         position: absolute;
-        right: 6vw;
-        height: 65%;
+        right: 5vw;
+        height: 70%;
     }
 
     &__logo {
@@ -22,29 +21,32 @@
     }
 
     &__open {
+        // border: 2px solid green;
+        height: 90.7vh;
+        background-color: var(--metx-light-grey);
         position: absolute;
-        height: 90vh;
-        top: 7vh;
-        display: flex;
+        top: 6vh;
+        left:0;
+        max-width: 100vw;
+        animation-name: links_enter;
+        animation-duration: 1.4s;
+        color: var(--metx-black);
 
         &__content {
-            padding-top: 6%;
-            width: 100vw;
-            background-color: var(--metx-light-grey);
+            padding-top: 3vh;
             padding-left: 6vw;
             font-size: 26px;
             line-height: 2;
+            display: grid;
+            width: 100vw;
 
             &__link {
                 color: var(--metx-blue);
-                position: relative;
-                animation-name: links_enter;
-                animation-duration: 1.2s;
             }
             
             @keyframes links_enter {
-            0%   {color: var(--metx-light-grey); left: -300px}
-            100% {color: var(--metx-blue); left: 0}
+            0%   {left: -300px}
+            100% {left: 0}
             }
         }
     }

@@ -1,15 +1,21 @@
+import { useContextProvider } from "../../providers/Provider.js";
 import { formatItemCount } from "../../helperFunctions/helperFunctions";
+// import Logo from "../../assets/METx_logo_dark.png";
 import "./Footer.scss";
 
 export default function Footer() {
+  const { allItemIDs } = useContextProvider();
   return (
     <footer className="footer">
-      <div className="footer__creator"><span>Daniel Mazzilli</span></div>
-      {/* <div>
-        |
-      </div> */}
+      <div>Daniel Mazzilli</div>
+      {/* <img className="footer__logo" src={Logo} alt="logo" /> */}
       <div className="footer__items">
-        Item Count: <span className="footer__items__count">{itemIDs.total === undefined ? "loading" : formatItemCount(itemIDs.total)}</span>
+        Item Count:{" "}
+        <span className="footer__items__count">
+          {allItemIDs.total === undefined
+            ? "loading"
+            : formatItemCount(allItemIDs.total)}
+        </span>
       </div>
     </footer>
   );

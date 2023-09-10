@@ -1,4 +1,4 @@
-// import RouteComponent from "./components/routes/RouteComponent.js";
+import RouteComponent from "./components/routes/RouteComponent.js";
 import "./App.scss";
 
 function App() {

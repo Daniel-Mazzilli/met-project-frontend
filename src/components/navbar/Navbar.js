@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useContextProvider } from "../../providers/Provider.js";
 import { Link, useNavigate } from "react-router-dom";
 import Hamburger from "../../assets/hamburger_light.png";
@@ -15,8 +15,8 @@ export default function Navbar() {
     { val: "Login", route: "login" },
     { val: "Play", route: "play" },
     { val: "Search", route: "search" },
-    { val: "Favorites", route: "favorites" },
-    { val: "Random", route: "random" },
+    { val: "Favorites", route: "user/favorites" },
+    { val: "Random", route: "random-item" },
     { val: "About", route: "about" },
   ]);
 
@@ -54,7 +54,6 @@ export default function Navbar() {
                   {val}
                 </Link>
               ))}
-            ;
             <a
               className="navbar__open__content__link"
               href="https://metmuseum.github.io/"
@@ -69,7 +68,7 @@ export default function Navbar() {
             >
               Visit
             </a>
-            <div className="navbar__open__content__link">Dark Mode</div>
+            <div>Dark Mode TBA</div>
           </div>
         </div>
       )}
