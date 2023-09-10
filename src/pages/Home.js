@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function Home() {
     return (
         <div>
@@ -5,7 +7,7 @@ export default function Home() {
             <br />
             IN CONSTRUCTION ...
             <br/>
-            currently working on search page
+            currently working on <Link to="search" style={{color: "blue"}}>search page</Link>
         </div>
     );
 }

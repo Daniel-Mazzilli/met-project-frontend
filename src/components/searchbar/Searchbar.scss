@@ -3,16 +3,16 @@
 
     &__form {
         width: 100%;
-        border: 2px solid var(--black);
+        border: 2px solid var(--metx-black);
         border-radius: 4px;
         display: grid;
         grid-template-columns: 4fr 1fr;
-        background-color: var(--black);
+        background-color: var(--metx-black);
 
         &__input {
             all: unset;
             padding: 2px 8px;
-            background-color: var(--light-grey);
+            background-color: var(--metx-light-grey);
         }
 
         &__submit {
@@ -24,8 +24,8 @@
     }
 
     &__form:focus-within {
-        border: 2px solid var(--blue);
-        background-color: var(--blue);
+        border: 2px solid var(--metx-blue);
+        background-color: var(--metx-blue);
     }
 
     &__results{
@@ -40,9 +40,9 @@
             // grid-template-columns: 1fr 1fr;
             display: flex;
             flex-direction: column;
-            flex-wrap: wrap;
+            align-items: center;
+            // justify-content: center;
         }
     }
-
     
 }

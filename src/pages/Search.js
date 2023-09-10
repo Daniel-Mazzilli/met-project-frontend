@@ -1,11 +1,8 @@
-// import SearchResults from "../components/searchresults/SearchResults.js"
+import Searchbar from "../components/searchbar/Searchbar.js"
 
 function Search() {
     return (
-        // <SearchResults />
-        <div>
-            search page
-        </div>
+        <Searchbar />
     );
 }
 
