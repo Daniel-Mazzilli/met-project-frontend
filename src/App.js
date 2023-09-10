@@ -1,21 +1,10 @@
-import Navbar from "./components/navbar/Navbar";
-import Footer from "./components/footer/Footer";
-import "./App.css";
-import Searchbar from "./components/searchbar/Searchbar";
-import ItemSmallCard from "./components/itemSmallCard/ItemSmallCard";
+// import RouteComponent from "./components/routes/RouteComponent.js";
+import "./App.scss";
 
 function App() {
   return (
     <div className="App">
-      <Navbar />
-      <div className="page">
-        <Searchbar />
-        <br />
-        {/* <ItemSmallCard />
-        <ItemSmallCard />
-        <ItemSmallCard /> */}
-      </div>
-      <Footer />
+      <RouteComponent />
     </div>
   );
 }

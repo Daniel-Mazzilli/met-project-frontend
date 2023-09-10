@@ -3,13 +3,22 @@
 * {
   box-sizing: border-box;
   margin: 0;
-  font-family: "Kanit", "REM", "Cabin";
-  --red: #E4062B;
-  --dark-grey: #333333;
-  --light-grey: #F6F6F6;
-  --black: #252525;
-  --blue: rgb(113, 113, 225);
+  font-family: "Kanit", "REM", "Cabin", Arial, sans-serif;
+  --metx-red: #E4062B;
+  --metx-dark-grey: #333333;
+  --met-light-grey: #F6F6F6;
+  --met-black: #252525;
+  --met-blue: rgb(113, 113, 225);
   color: var(--black);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+// theme
+
+// links
+a {
+  text-decoration: none;
+  color: var(--met-blue);
+  font-weight: 600;
 }
