@@ -9,6 +9,7 @@
     width: 100vw;
     box-shadow: 0 2px 5px var(--metx-black);
     padding-left: 5vw;
+    z-index: 10;
 
     &__toggle {
         position: absolute;
@@ -22,14 +23,15 @@
 
     &__open {
         // border: 2px solid green;
-        height: 90.7vh;
+        // height: 90.7vh;
+        height: 92vh;
         background-color: var(--metx-light-grey);
         position: absolute;
         top: 6vh;
         left:0;
         max-width: 100vw;
         animation-name: links_enter;
-        animation-duration: 1.4s;
+        animation-duration: 0.8s;
         color: var(--metx-black);
 
         &__content {
@@ -42,6 +44,7 @@
 
             &__link {
                 color: var(--metx-blue);
+                width: fit-content;
             }
             
             @keyframes links_enter {

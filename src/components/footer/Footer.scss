@@ -1,15 +1,19 @@
 .footer {
-    background-color: var(--metx-light-grey);
+    background-color: rgb(228, 228, 228);
     color: var(--metx-dark-grey);
     width: 100vw;
     // border: 2px solid green;
     position: fixed;
     bottom: 0;
+    left: 0;
     font-size: 16px;
     padding: 1px 2vw;
     display: flex;
     justify-content: space-between;
     height: 3vh;
+    animation-name: footer_enter;
+    animation-duration: 0.8s;
+    align-items: center;
 
     &__logo {
         height: 100%;
@@ -21,4 +25,9 @@
             font-weight: 600;
         }
     }
+
+    @keyframes footer_enter {
+        0%   {left: -300px}
+        100% {left: 0}
+        }
 }

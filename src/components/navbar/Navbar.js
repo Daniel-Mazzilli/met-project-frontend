@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useContextProvider } from "../../providers/Provider.js";
 import { Link, useNavigate } from "react-router-dom";
+import Footer from "../footer/Footer.js"
 import Hamburger from "../../assets/hamburger_light.png";
 import CloseIcon from "../../assets/x_light.png";
 import Logo from "../../assets/METx_logo.png";
@@ -50,6 +51,7 @@ export default function Navbar() {
                   key={i}
                   className="navbar__open__content__link"
                   to={route}
+                  onClick={() => setIsMenuOpen(false)}
                 >
                   {val}
                 </Link>
@@ -69,6 +71,7 @@ export default function Navbar() {
               Visit
             </a>
             <div>Dark Mode TBA</div>
+            <Footer />
           </div>
         </div>
       )}

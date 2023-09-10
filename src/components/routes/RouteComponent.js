@@ -11,23 +11,25 @@ import Search from "../../pages/Search.js";
 import User from "../../pages/User.js";
 
 function RouteComponent() {
-  <Routes>
-    <Route path="/">
-      <Route index element={<Home />} />
-      <Route path="login" element={<Login />} />
-      <Route path="register" element={<Register />} />
-      <Route path="play" element={<Play />} />
-      <Route path="random-item" element={<Random />} />
-      <Route path="search" element={<Search />} />
-      <Route path="user">
-        <Route index element={<User />} />
-        <Route path="favorites" element={<Favorites />} />
+  return (
+    <Routes>
+      <Route path="/">
+        <Route index element={<Home />} />
+        <Route path="login" element={<Login />} />
+        <Route path="register" element={<Register />} />
+        <Route path="play" element={<Play />} />
+        <Route path="random-item" element={<Random />} />
+        <Route path="search" element={<Search />} />
+        <Route path="user">
+          <Route index element={<User />} />
+          <Route path="favorites" element={<Favorites />} />
         </Route>
-      <Route path="about" element={<About />} />
-      <Route path="/not-found" element={<Error />} />
-      <Route path="*" element={<Navigate to="/not-found" />} />
-    </Route>
-  </Routes>;
+        <Route path="about" element={<About />} />
+        <Route path="/not-found" element={<Error />} />
+        <Route path="*" element={<Navigate to="/not-found" />} />
+      </Route>
+    </Routes>
+  );
 }
 
 export default RouteComponent;
