@@ -1,9 +1,12 @@
-import Searchbar from "../components/searchbar/Searchbar.js"
+import SearchProvider from "../providers/SearchProvider.js";
+import SearchComponent from "../components/search/searchComponent/SearchComponent.js";
 
 function Search() {
-    return (
-        <Searchbar />
-    );
+  return (
+    <SearchProvider>
+      <SearchComponent />
+    </SearchProvider>
+  );
 }
 
 export default Search;
