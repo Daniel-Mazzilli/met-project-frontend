@@ -31,13 +31,13 @@ export default function Searchbar() {
         .then(({ data }) => {
           setSearchResults(data.objectIDs);
           setSearchHeader(searchInput);
-          setDisplayedIDs(data.objectIDs.slice(0, 8));
+          setDisplayedIDs(data.objectIDs.slice(0, 16));
           setSearchInput("");
         })
         .catch((err) => console.log(err));
     } else {
       setDisplayedIDs(
-        searchResults.slice(8 * (pagination + 1), 8 * (pagination + 1) + 8)
+        searchResults.slice(16 * (pagination + 1), 16 * (pagination + 1) + 16)
       );
       setPagination(pagination + 1);
     }

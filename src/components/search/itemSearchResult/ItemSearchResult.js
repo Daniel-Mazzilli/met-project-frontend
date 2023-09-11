@@ -1,36 +1,31 @@
+import { useSearchProvider } from "../../../providers/SearchProvider";
 import { useState, useEffect } from "react";
-import axios from "axios";
 import noimage from "../../../assets/no-image-small.png";
 import "./ItemSearchResult.scss";
 
-export default function ItemSearchResult({
-  itemID,
-  // setHighlight,
-  // setShowMore,
-}) {
-  const API = process.env.REACT_APP_MET_API_URL;
+export default function ItemSearchResult({ itemID }) {
+  const {METAPI, axios} = useSearchProvider();
   const [itemDetails, setItemDetails] = useState({});
 
   useEffect(() => {
-    axios.get(`${API}objects/${itemID}`).then(({ data }) => {
+    axios.get(`${METAPI}objects/${itemID}`).then(({ data }) => {
       setItemDetails(data);
     });
   }, [itemID]);
+
   return (
     <div className="itemSearchResult">
       <img
         className="itemSearchResult__img"
-        src={itemDetails.primaryImageSmall || itemDetails.primaryImage || noimage}
+        src={
+          itemDetails.primaryImageSmall || itemDetails.primaryImage || noimage
+        }
         alt="item"
         onClick={() => {
-          // setShowMore(false);
-          // setHighlight(itemID);
           window.scrollTo(0, 0);
         }}
       />
-      {!itemDetails.primaryImageSmall && !itemDetails.primaryImage && <div className="itemSearchResult__name">
-        {itemDetails.title}
-        </div>}
+      <div className="itemSearchResult__name">{itemDetails.title || "no title"}</div>
     </div>
   );
 }
