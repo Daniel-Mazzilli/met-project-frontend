@@ -4,6 +4,8 @@ import ItemSearchResult from "../itemSearchResult/ItemSearchResult.js";
 import "./SearchResults.scss";
 
 export default function SearchResults() {
+  const [trigger, setTrigger] = useState(false);
+  
   const {
     searchResults,
     searchHeader,
@@ -12,24 +14,36 @@ export default function SearchResults() {
     pagination,
     setPagination,
     loading,
+    setLoading,
     error,
     searchInput,
     hasMore,
   } = useSearchProvider();
 
   const observer = useRef();
-  const lastItem = useCallback((node) => {
-    // console.log(node)
-    if (loading) return;
-    if (observer.current) observer.current.disconnect();
-    observer.current = new IntersectionObserver((entries) => {
-        if(entries[0].isIntersecting && hasMore){
-            console.log("Visible")
-            //add code here
+  const lastItem = useCallback(
+    (node) => {
+      // console.log(node)
+      if (loading) return;
+      if (observer.current) observer.current.disconnect();
+      observer.current = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting && hasMore) {
+          console.log("Visible");
+          setDisplayedIDs([
+            ...displayedIDs,
+            ...searchResults.slice(
+              8 * (pagination + 1),
+              8 * (pagination + 1) + 8
+            ),
+          ]);
+          setPagination(pagination + 1);
+          setTrigger(!trigger);
         }
-    });
-    if(node) observer.current.observe(node)
-  }, [loading, hasMore]);
+      });
+      if (node) observer.current.observe(node);
+    },
+    [loading, hasMore, trigger]
+  );
 
   return (
     <div id="search-results" className="searchResults">

@@ -11,6 +11,7 @@ export default function Searchbar() {
     setSearchHeader,
     searchResults,
     setSearchResults,
+    displayedIDs,
     setDisplayedIDs,
     pagination,
     setPagination,
