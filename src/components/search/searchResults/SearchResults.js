@@ -5,30 +5,6 @@ import "./SearchResults.scss";
 
 export default function SearchResults() {
   const { searchResults, searchHeader, displayedIDs, setDisplayedIDs, pagination, setPagination } = useSearchProvider();
-
-  //testing scrollHandler
-//   const [scrollTop, setScrollTop] = useState(0);
-
-//   useEffect(() => {
-//     const handleScroll = event => {
-//       setScrollTop(window.scrollY);
-//     };
-    
-//     window.addEventListener('scroll', handleScroll);
-
-//     return () => {
-//       window.removeEventListener('scroll', handleScroll);
-//     };
-//   }, []);
-
-//   useEffect(() => {
-//     const fullHeight = document.getElementById('search-results').offsetHeight;
-
-//     if(scrollTop > fullHeight / 1.5){
-//         setDisplayedIDs([searchResults.slice(pagination * 16, pagination * 17 )])
-//         setPagination(pagination + 1)
-//     }
-//   }, [scrollTop])
   
   return (
     <div id="search-results" className="searchResults">
