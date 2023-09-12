@@ -15,6 +15,9 @@ function SearchProvider({ children }) {
   const [displayedIDs, setDisplayedIDs] = useState([]);
   const [pagination, setPagination] = useState(0);
   const [selectedItem, setSelectedItem] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
+  const [hasMore, setHasMore] = useState(false);
 
   useEffect(() => {
     setPagination(0);
@@ -37,6 +40,12 @@ function SearchProvider({ children }) {
         setSelectedItem,
         METAPI,
         axios,
+        loading,
+        setLoading,
+        error,
+        setError,
+        hasMore,
+        setHasMore,
       }}
     >
       {children}

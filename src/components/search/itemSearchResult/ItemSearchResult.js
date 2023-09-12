@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import noimage from "../../../assets/no-image-small.png";
 import "./ItemSearchResult.scss";
 
-export default function ItemSearchResult({ itemID }) {
+export default function ItemSearchResult({ itemID, innerRef }) {
   const {METAPI, axios} = useSearchProvider();
   const [itemDetails, setItemDetails] = useState({});
 
@@ -14,7 +14,7 @@ export default function ItemSearchResult({ itemID }) {
   }, [itemID]);
 
   return (
-    <div className="itemSearchResult">
+    <div ref={innerRef} className="itemSearchResult">
       <img
         className="itemSearchResult__img"
         src={
