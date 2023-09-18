@@ -8,7 +8,6 @@ export default function Searchbar() {
     axios,
     searchInput,
     setSearchInput,
-    setSearchHeader,
     searchResults,
     setSearchResults,
     displayedIDs,
@@ -30,60 +29,34 @@ export default function Searchbar() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    //   if (searchInput !== "") {
-    //     setSearchResults([]);
-    //     setSearchHeader("");
-    //     setDisplayedIDs([]);
-    //     const formattedInput = searchInput.split(" ").join("+");
-    //     axios
-    //       .get(`${METAPI}search?q=${formattedInput}`)
-    //       .then(({ data }) => {
-    //         setSearchResults(data.objectIDs);
-    //         setSearchHeader(searchInput);
-    //         setDisplayedIDs(data.objectIDs.slice(0, 8));
-    //         setSearchInput("");
-    //       })
-    //       .catch((err) => console.log(err));
-    //   } else {
-    //     setDisplayedIDs(
-    //       searchResults.slice(8 * (pagination + 1), 8 * (pagination + 1) + 8)
-    //     );
-    //     setPagination(pagination + 1);
-    //   }
+      if (searchInput !== "") {
+        setLoading(true);
+        const formattedInput = searchInput.split(" ").join("+");
+        
+        axios
+          .get(`${METAPI}search?q=${formattedInput}`)
+          .then(({ data }) => {
+            setSearchResults(data.objectIDs || []);
+            setDisplayedIDs(data.objectIDs ? data.objectIDs.slice(0, 8) : []);
+            setHasMore(data.total > 8);
+          })
+          .catch((err) => {
+            setError(true);
+            console.log(err)
+          });
+      }
+      //testing pagination
+      // else {
+      //   setDisplayedIDs(
+      //     searchResults.slice(8 * (pagination + 1), 8 * (pagination + 1) + 8)
+      //   );
+      //   setPagination(pagination + 1);
+      // }
   };
-
-  useEffect(() => {
-    if (searchInput !== "") {
-      setLoading(true);
-      setError(false);
-      const formattedInput = searchInput.split(" ").join("+");
-
-      let cancel;
-      axios({
-        method: "GET",
-        url: `${METAPI}search?q=${formattedInput}`,
-        cancelToken: new axios.CancelToken((c) => (cancel = c)),
-      })
-        .then(({ data }) => {
-          setSearchResults(data.objectIDs || []);
-          setDisplayedIDs(data.objectIDs ? data.objectIDs.slice(0, 8) : []);
-          setHasMore(data.total > 8);
-          setLoading(false);
-        })
-        .catch((err) => {
-          if (axios.isCancel(err)) return;
-          setError(true);
-          console.log(err);
-        });
-
-      return () => cancel();
-    }
-
-    if (searchInput === "") {
-      setSearchResults([]);
-      setDisplayedIDs([]);
-    }
-  }, [searchInput]);
+  
+  useEffect(()=> {
+    setLoading(false);
+  }, [searchResults])
 
   return (
     <div className="searchbar">
@@ -96,7 +69,7 @@ export default function Searchbar() {
           onChange={handleChange}
         />
         <input
-          className="searchbar__form__submit"
+          className = {searchInput ? "searchbar__form__submit" : "searchbar__form__submit inactive"}
           type="submit"
           value="SEARCH"
         />

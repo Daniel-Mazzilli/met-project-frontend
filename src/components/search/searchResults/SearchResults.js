@@ -5,7 +5,7 @@ import "./SearchResults.scss";
 
 export default function SearchResults() {
   const [trigger, setTrigger] = useState(false);
-  
+
   const {
     searchResults,
     searchHeader,
@@ -48,7 +48,7 @@ export default function SearchResults() {
   return (
     <div id="search-results" className="searchResults">
       {!searchResults.length && <div>search the Met's collection</div>}
-      {searchResults.length > 0 && (
+      {!loading && searchResults.length > 0 && (
         <div className="searchbar__results">
           {searchResults.length} search results for:{" "}
           <span className="searchbar__results__bold">{searchHeader}</span>

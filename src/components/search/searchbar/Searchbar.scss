@@ -17,10 +17,12 @@
 
         &__submit {
             all: unset;
-            // background-color: var(--black);
+            background-color: var(--metx-blue);
             color: #ffff;
             text-align: center;
         }
+
+        
     }
 
     &__form:focus-within {
@@ -43,6 +45,11 @@
             align-items: center;
             // justify-content: center;
         }
+    }
+
+    & .inactive {
+        background-color: rgb(161, 161, 161);
+        // background-color: var(--metx-dark-grey);
     }
     
 }

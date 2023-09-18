@@ -10,12 +10,12 @@ function SearchProvider({ children }) {
   const { METAPI, axios } = useContextProvider();
 
   const [searchInput, setSearchInput] = useState("");
-  const [searchHeader, setSearchHeader] = useState("");
+  // const [searchHeader, setSearchHeader] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [displayedIDs, setDisplayedIDs] = useState([]);
   const [pagination, setPagination] = useState(0);
   const [selectedItem, setSelectedItem] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [hasMore, setHasMore] = useState(false);
 
@@ -28,8 +28,8 @@ function SearchProvider({ children }) {
       value={{
         searchInput,
         setSearchInput,
-        searchHeader,
-        setSearchHeader,
+        // searchHeader,
+        // setSearchHeader,
         searchResults,
         setSearchResults,
         displayedIDs,
