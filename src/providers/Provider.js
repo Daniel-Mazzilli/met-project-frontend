@@ -17,6 +17,7 @@ function Provider({ children }) {
   //   const [userID, setUserID] = useState(localUserID);
   //   const [authToken, setAuthToken] = useState("");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMenuClosing, setIsMenuClosing] = useState(false);
   // to do - add dynamic to user pc theme preference
   // const [theme, setTheme] = useState(localStorage.getItem("theme" || "light"));
   const [allItemIDs, setAllItemIDs] = useState([]);
@@ -43,6 +44,8 @@ function Provider({ children }) {
           axios,
           isMenuOpen,
           setIsMenuOpen,
+          isMenuClosing,
+          setIsMenuClosing,
           allItemIDs,
         }}
       >

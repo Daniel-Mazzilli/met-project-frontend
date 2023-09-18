@@ -4,9 +4,9 @@ import { formatItemCount } from "../../helperFunctions/helperFunctions";
 import "./Footer.scss";
 
 export default function Footer() {
-  const { allItemIDs } = useContextProvider();
+  const { allItemIDs, isMenuClosing } = useContextProvider();
   return (
-    <footer className="footer">
+    <footer className={isMenuClosing? "footer nav-close" : "footer nav-open"}>
       <div>Daniel Mazzilli</div>
       {/* <img className="footer__logo" src={Logo} alt="logo" /> */}
       <div className="footer__items">

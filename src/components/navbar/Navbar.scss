@@ -30,8 +30,6 @@
         top: 5.85vh;
         left:0;
         max-width: 100vw;
-        animation-name: links_enter;
-        animation-duration: 0.8s;
         color: var(--metx-black);
 
         &__content {
@@ -45,12 +43,26 @@
             &__link {
                 color: var(--metx-blue);
                 width: fit-content;
-            }
-            
-            @keyframes links_enter {
-            0%   {left: -300px}
-            100% {left: 0}
-            }
+            } 
         }
     }
+}
+
+// applied to nav and to footer
+.nav-open {
+    animation-name: nav_enter;
+    animation-duration: 0.8s;
+}
+.nav-close {
+    animation-name: nav_out;
+    animation-duration: 0.8s;
+}
+
+@keyframes nav_enter {
+    0%   {left: -100vw}
+    100% {left: 0}
+}
+@keyframes nav_out {
+    0%   {left: 0}
+    100% {left: -100vw}
 }

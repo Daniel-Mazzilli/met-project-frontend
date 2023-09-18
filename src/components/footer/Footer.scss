@@ -11,8 +11,6 @@
     display: flex;
     justify-content: space-between;
     height: 3vh;
-    animation-name: footer_enter;
-    animation-duration: 0.8s;
     align-items: center;
 
     &__logo {
@@ -25,9 +23,4 @@
             font-weight: 600;
         }
     }
-
-    @keyframes footer_enter {
-        0%   {left: -300px}
-        100% {left: 0}
-        }
 }

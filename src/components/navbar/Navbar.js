@@ -8,7 +8,7 @@ import Logo from "../../assets/METx_logo.png";
 import "./Navbar.scss";
 
 export default function Navbar() {
-  const { isMenuOpen, setIsMenuOpen } = useContextProvider();
+  const { isMenuOpen, setIsMenuOpen, isMenuClosing, setIsMenuClosing } = useContextProvider();
 
   const navigate = useNavigate();
 
@@ -37,13 +37,21 @@ export default function Navbar() {
       METxplorer
       <img
         className="navbar__toggle"
-        onClick={() => setIsMenuOpen(!isMenuOpen)}
+        onClick={() => {
+          if(isMenuOpen){
+            setIsMenuClosing(true);
+            setTimeout(() => setIsMenuOpen(false), "790");
+          } else {
+            setIsMenuOpen(true);
+            setIsMenuClosing(false);
+          }
+        }}
         src={isMenuOpen ? CloseIcon : Hamburger}
         alt="hamburger menu icon"
       />
       {/* open menu section */}
       {isMenuOpen && (
-        <div className="navbar__open">
+        <div className={isMenuClosing ? "navbar__open nav-close" : "navbar__open nav-open"}>
           <div className="navbar__open__content">
             {navLinks &&
               navLinks.map(({ val, route }, i) => (
