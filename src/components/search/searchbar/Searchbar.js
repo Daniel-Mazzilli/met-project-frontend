@@ -20,43 +20,76 @@ export default function Searchbar() {
     setError,
     hasMore,
     setHasMore,
+    fetchedItems,
+    setFetchedItems,
+    hasNoResults,
+    setHasNoResults,
   } = useSearchProvider();
 
   const handleChange = (event) => {
     setSearchInput(event.target.value);
-    setPagination(0);
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-      if (searchInput !== "") {
-        setLoading(true);
-        const formattedInput = searchInput.toLowerCase().split(" ").join("+");
-        
-        axios
-          .get(`${METAPI}search?q=${formattedInput}`)
-          .then(({ data }) => {
-            setSearchResults(data.objectIDs || []);
-            setDisplayedIDs(data.objectIDs ? data.objectIDs.slice(0, 8) : []);
-            setHasMore(data.total > 8);
-          })
-          .catch((err) => {
-            setError(true);
-            console.log(err)
-          });
-      }
-      //testing pagination
-      // else {
-      //   setDisplayedIDs(
-      //     searchResults.slice(8 * (pagination + 1), 8 * (pagination + 1) + 8)
-      //   );
-      //   setPagination(pagination + 1);
-      // }
+    if (searchInput !== "") {
+      setPagination(0);
+      setLoading(true);
+      const formattedInput = searchInput.toLowerCase().split(" ").join("+");
+
+      axios
+        .get(`${METAPI}search?q=${formattedInput}`)
+        .then(({ data }) => {
+          console.log(data)
+          if (data.total === 0) {
+            setLoading(false);
+            setHasNoResults(true);
+          } else {
+            setHasNoResults(false);
+          }
+          setSearchResults(data.objectIDs || []);
+          setDisplayedIDs(data.objectIDs ? data.objectIDs.slice(0, 8) : []);
+          setHasMore(data.total > 8);
+        })
+        .catch((err) => {
+          setError(true);
+          console.log(err);
+        });
+    }
+    //testing pagination
+    // else {
+    //   setDisplayedIDs(
+    //     searchResults.slice(8 * (pagination + 1), 8 * (pagination + 1) + 8)
+    //   );
+    //   setPagination(pagination + 1);
+    // }
   };
-  
-  useEffect(()=> {
-    setLoading(false);
-  }, [searchResults])
+
+  // useEffect(() => {
+  //   setLoading(false);
+  // }, [searchResults]);
+
+  const fetchItemData = (itemID) => {
+    return axios
+      .get(`${METAPI}objects/${itemID}`)
+      .then(({ data }) => data)
+      .catch((err) => console.log(err));
+  };
+
+  const getItemsData = (items) => {
+    return Promise.all(items.map(fetchItemData))
+      .then((res) => {
+        setFetchedItems(res);
+        setLoading(false);
+      })
+      .catch((err) => console.log(err));
+  };
+
+  // useEffect(() => {
+  //   if (displayedIDs.length > 0) {
+  //     getItemsData(displayedIDs);
+  //   }
+  // }, [displayedIDs]);
 
   return (
     <div className="searchbar">
@@ -69,7 +102,11 @@ export default function Searchbar() {
           onChange={handleChange}
         />
         <input
-          className = {searchInput ? "searchbar__form__submit" : "searchbar__form__submit inactive"}
+          className={
+            searchInput
+              ? "searchbar__form__submit"
+              : "searchbar__form__submit inactive"
+          }
           type="submit"
           value="SEARCH"
         />

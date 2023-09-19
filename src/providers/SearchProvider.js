@@ -10,14 +10,15 @@ function SearchProvider({ children }) {
   const { METAPI, axios } = useContextProvider();
 
   const [searchInput, setSearchInput] = useState("");
-  // const [searchHeader, setSearchHeader] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [displayedIDs, setDisplayedIDs] = useState([]);
+  const [fetchedItems, setFetchedItems] = useState([]);
   const [pagination, setPagination] = useState(0);
   const [selectedItem, setSelectedItem] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [hasMore, setHasMore] = useState(false);
+  const [hasNoResults, setHasNoResults] = useState(false);
 
   useEffect(() => {
     setPagination(0);
@@ -28,8 +29,8 @@ function SearchProvider({ children }) {
       value={{
         searchInput,
         setSearchInput,
-        // searchHeader,
-        // setSearchHeader,
+        fetchedItems,
+        setFetchedItems,
         searchResults,
         setSearchResults,
         displayedIDs,
@@ -46,6 +47,8 @@ function SearchProvider({ children }) {
         setError,
         hasMore,
         setHasMore,
+        hasNoResults,
+        setHasNoResults,
       }}
     >
       {children}
