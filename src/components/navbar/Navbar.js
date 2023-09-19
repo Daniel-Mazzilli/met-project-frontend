@@ -1,14 +1,15 @@
 import { useState } from "react";
 import { useContextProvider } from "../../providers/Provider.js";
 import { Link, useNavigate } from "react-router-dom";
-import Footer from "../footer/Footer.js"
+import Footer from "../footer/Footer.js";
 import Hamburger from "../../assets/hamburger_light.png";
 import CloseIcon from "../../assets/x_light.png";
 import Logo from "../../assets/METx_logo.png";
 import "./Navbar.scss";
 
 export default function Navbar() {
-  const { isMenuOpen, setIsMenuOpen, isMenuClosing, setIsMenuClosing } = useContextProvider();
+  const { isMenuOpen, setIsMenuOpen, isMenuClosing, setIsMenuClosing } =
+    useContextProvider();
 
   const navigate = useNavigate();
 
@@ -34,13 +35,19 @@ export default function Navbar() {
           setIsMenuOpen(false);
         }}
       />
-      METxplorer
+      <Link
+        className="navbar__header"
+        to="/"
+        onClick={() => setIsMenuOpen(false)}
+      >
+        METxplorer
+      </Link>
       <img
         className="navbar__toggle"
         onClick={() => {
-          if(isMenuOpen){
+          if (isMenuOpen) {
             setIsMenuClosing(true);
-            setTimeout(() => setIsMenuOpen(false), "790");
+            setTimeout(() => setIsMenuOpen(false), "795");
           } else {
             setIsMenuOpen(true);
             setIsMenuClosing(false);
@@ -51,7 +58,11 @@ export default function Navbar() {
       />
       {/* open menu section */}
       {isMenuOpen && (
-        <div className={isMenuClosing ? "navbar__open nav-close" : "navbar__open nav-open"}>
+        <div
+          className={
+            isMenuClosing ? "navbar__open nav-close" : "navbar__open nav-open"
+          }
+        >
           <div className="navbar__open__content">
             {navLinks &&
               navLinks.map(({ val, route }, i) => (

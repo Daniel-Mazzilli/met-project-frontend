@@ -8,7 +8,6 @@ export default function SearchResults() {
 
   const {
     searchResults,
-    searchHeader,
     displayedIDs,
     setDisplayedIDs,
     pagination,
@@ -46,13 +45,12 @@ export default function SearchResults() {
   );
 
   return (
-    <div id="search-results" className="searchResults">
+    <div className="search">
       {!searchResults.length && <div>search the Met's collection</div>}
       {!loading && searchResults.length > 0 && (
-        <div className="searchbar__results">
-          {searchResults.length} search results for:{" "}
-          <span className="searchbar__results__bold">{searchHeader}</span>
-          <div className="searchbar__results__items">
+        <div className="search__results">
+          <span>{searchResults.length}</span>Total Results
+          <div className="search__results__items">
             {displayedIDs.map((e, i) => {
               if (i === displayedIDs.length - 1) {
                 return (

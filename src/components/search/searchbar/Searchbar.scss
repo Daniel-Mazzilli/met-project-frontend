@@ -30,23 +30,6 @@
         background-color: var(--metx-blue);
     }
 
-    &__results{
-        font-size: 18px;
-        
-        &__bold{
-            font-weight: 600;
-        }
-    
-        &__items{
-            // display: grid;
-            // grid-template-columns: 1fr 1fr;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            // justify-content: center;
-        }
-    }
-
     & .inactive {
         background-color: rgb(161, 161, 161);
         // background-color: var(--metx-dark-grey);

@@ -31,7 +31,7 @@ export default function Searchbar() {
     event.preventDefault();
       if (searchInput !== "") {
         setLoading(true);
-        const formattedInput = searchInput.split(" ").join("+");
+        const formattedInput = searchInput.toLowerCase().split(" ").join("+");
         
         axios
           .get(`${METAPI}search?q=${formattedInput}`)
