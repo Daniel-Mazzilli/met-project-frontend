@@ -40,7 +40,7 @@ export default function Searchbar() {
       axios
         .get(`${METAPI}search?q=${formattedInput}`)
         .then(({ data }) => {
-          console.log(data)
+          console.log(data);
           if (data.total === 0) {
             setLoading(false);
             setHasNoResults(true);
@@ -85,22 +85,34 @@ export default function Searchbar() {
       .catch((err) => console.log(err));
   };
 
-  // useEffect(() => {
-  //   if (displayedIDs.length > 0) {
-  //     getItemsData(displayedIDs);
-  //   }
-  // }, [displayedIDs]);
+  useEffect(() => {
+    if (displayedIDs.length > 0) {
+      getItemsData(displayedIDs);
+    }
+  }, [displayedIDs]);
 
   return (
     <div className="searchbar">
       <form className="searchbar__form" onSubmit={handleSubmit}>
-        <input
-          className="searchbar__form__input"
-          type="text"
-          placeholder="Search Full Collection"
-          value={searchInput}
-          onChange={handleChange}
-        />
+        <div className="searchbar__form__input">
+          <input
+            className="searchbar__form__input__text"
+            type="text"
+            placeholder="Search Full Collection"
+            value={searchInput}
+            onChange={handleChange}
+          />
+          <div
+            className={`${
+              !searchInput
+                ? "searchbar__form__input__cancel"
+                : "searchbar__form__input__cancel__active"
+            }`}
+            onClick={() => setSearchInput("")}
+          >
+            X
+          </div>
+        </div>
         <input
           className={
             searchInput

@@ -53,7 +53,7 @@ export default function Navbar() {
             setIsMenuClosing(false);
           }
         }}
-        src={isMenuOpen ? CloseIcon : Hamburger}
+        src={isMenuOpen && !isMenuClosing ? CloseIcon : Hamburger}
         alt="hamburger menu icon"
       />
       {/* open menu section */}
