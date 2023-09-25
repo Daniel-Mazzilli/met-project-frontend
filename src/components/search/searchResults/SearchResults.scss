@@ -1,11 +1,14 @@
-.search {
- &__results {
-    font-size: 20px;
-    text-align: center;
-    
-    & span {
-    font-weight: 600;
-    margin-right: 4px;
-    }
- }
+.searchresults {
+   margin-top: 4px;
+   text-align: center;
+   font-size: 22px;
+
+      &__items {
+         // font-size: 20px; 
+         
+         & span {
+         font-weight: 600;
+         margin-right: 4px;
+         }
+      }
 }

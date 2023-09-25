@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef, useCallback } from "react";
+import { useState, useRef, useCallback } from "react";
 import { useSearchProvider } from "../../../providers/SearchProvider";
 import ItemSearchResult from "../itemSearchResult/ItemSearchResult.js";
 import { formatItemCount } from "../../../helperFunctions/helperFunctions";
@@ -30,48 +30,74 @@ export default function SearchResults() {
       observer.current = new IntersectionObserver((entries) => {
         if (entries[0].isIntersecting && hasMore) {
           console.log("Visible");
-          setDisplayedIDs([
-            ...displayedIDs,
-            ...searchResults.slice(
-              8 * (pagination + 1),
-              8 * (pagination + 1) + 8
-            ),
-          ]);
-          setPagination(pagination + 1);
-          setTrigger(!trigger);
+          // setDisplayedIDs([
+          //   ...displayedIDs,
+          //   ...searchResults.slice(
+          //     8 * (pagination + 1),
+          //     8 * (pagination + 1) + 8
+          //   ),
+          // ]);
+          // setPagination(pagination + 1);
+          // setTrigger(!trigger);
         }
       });
       if (node) observer.current.observe(node);
     },
-    [loading, hasMore, trigger]
+    [fetchedItems]
   );
 
+  // const lastItem = useCallback(
+  //   (node) => {
+  //     // console.log(node)
+  //     if (loading) return;
+  //     if (observer.current) observer.current.disconnect();
+  //     observer.current = new IntersectionObserver((entries) => {
+  //       if (entries[0].isIntersecting && hasMore) {
+  //         console.log("Visible");
+  //         setDisplayedIDs([
+  //           ...displayedIDs,
+  //           ...searchResults.slice(
+  //             8 * (pagination + 1),
+  //             8 * (pagination + 1) + 8
+  //           ),
+  //         ]);
+  //         setPagination(pagination + 1);
+  //         setTrigger(!trigger);
+  //       }
+  //     });
+  //     if (node) observer.current.observe(node);
+  //   },
+  //   [loading, hasMore, trigger]
+  // );
+
   return (
-    <div className="search">
-      {!searchResults.length && <div>explore the Met's collection</div>}
+    <div className="searchresults">
+      {!loading && !searchResults.length && <div>Explore The Met's Collection</div>}
 
       {!loading && fetchedItems.length > 0 && (
-        <div className="search__results">
+        <div className="searchresults__items">
           <span>{formatItemCount(searchResults.length)}</span>Total Results
-          <div className="search__results__items">
+          <div className="searchresults__items__entry">
             {fetchedItems.map((e, i) => {
               if (i === fetchedItems.length - 1) {
                 return (
                   <ItemSearchResult
-                    // innerRef={lastItem}
-                    key={e}
+                    innerRef={lastItem}
+                    key={e.objectID}
                     item={e}
                   />
                 );
               } else {
-                return <ItemSearchResult key={e} item={e} />;
+                return <ItemSearchResult key={e.objectID} item={e} />;
               }
             })}
           </div>
         </div>
       )}
-      {searchInput && loading && "Loading..."}
-      {error && "Error"}
+
+      {searchInput && loading && "LOADING..."}
+
+      {error && "An Error Occurred"}
     </div>
   );
 }

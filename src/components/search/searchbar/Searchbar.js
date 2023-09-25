@@ -40,7 +40,6 @@ export default function Searchbar() {
       axios
         .get(`${METAPI}search?q=${formattedInput}`)
         .then(({ data }) => {
-          console.log(data);
           if (data.total === 0) {
             setLoading(false);
             setHasNoResults(true);
@@ -65,9 +64,14 @@ export default function Searchbar() {
     // }
   };
 
-  // useEffect(() => {
-  //   setLoading(false);
-  // }, [searchResults]);
+  useEffect(() => {
+    if (!searchInput) {
+      setSearchResults([]);
+      setDisplayedIDs([]);
+      setFetchedItems([]);
+      setPagination(0);
+    }
+  }, [searchInput]);
 
   const fetchItemData = (itemID) => {
     return axios
@@ -76,13 +80,14 @@ export default function Searchbar() {
       .catch((err) => console.log(err));
   };
 
-  const getItemsData = (items) => {
-    return Promise.all(items.map(fetchItemData))
-      .then((res) => {
-        setFetchedItems(res);
-        setLoading(false);
-      })
-      .catch((err) => console.log(err));
+  const getItemsData = async (items) => {
+    try {
+      const res = await Promise.all(items.map(fetchItemData));
+      setFetchedItems([...fetchedItems, ...res]);
+      setLoading(false);
+    } catch (err) {
+      return console.log(err);
+    }
   };
 
   useEffect(() => {
