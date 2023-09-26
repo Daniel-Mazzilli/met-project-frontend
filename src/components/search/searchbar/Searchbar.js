@@ -52,14 +52,13 @@ export default function Searchbar() {
     event.preventDefault();
     if (searchInput !== "") {
       const formattedInput = searchInput.toLowerCase().split(" ").join("+");
-      if(formattedInput === keywords){
-        return
+      if (formattedInput === keywords) {
+        return;
       }
       resetSearch();
       setLoading(true);
       navigate(`/search/${formattedInput}`);
     }
-    
   };
 
   useEffect(() => {
@@ -145,7 +144,12 @@ export default function Searchbar() {
         </div>
         <input
           className={
+            searchInput &&
             searchInput
+              .toLowerCase()
+              .replaceAll("+", "")
+              .replaceAll(" ", "") !==
+              keywords.toLowerCase().replaceAll("+", "").replaceAll(" ", "")
               ? "searchbar__form__submit"
               : "searchbar__form__submit inactive"
           }
