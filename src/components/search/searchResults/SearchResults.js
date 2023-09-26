@@ -66,7 +66,7 @@ export default function SearchResults() {
         <div>Explore The Met's Collection</div>
       )}
 
-      {fetchedItems.length > 0 && (
+      {searchResults.length > 0 && fetchedItems.length > 0 && (
         <div className="searchresults__items">
           <span>{formatItemCount(searchResults.length)}</span>Total Results
           <div className="searchresults__items__entry">

@@ -1,8 +1,12 @@
 import { useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import { useSearchProvider } from "../../../providers/SearchProvider.js";
 import "./Searchbar.scss";
 
 export default function Searchbar() {
+  const { keywords } = useParams();
+  const navigate = useNavigate();
+
   const {
     METAPI,
     axios,
@@ -24,6 +28,7 @@ export default function Searchbar() {
     setFetchedItems,
     hasNoResults,
     setHasNoResults,
+    setSelectedItem,
   } = useSearchProvider();
 
   const resetSearch = () => {
@@ -31,6 +36,12 @@ export default function Searchbar() {
     setDisplayedIDs([]);
     setFetchedItems([]);
     setPagination(0);
+    setHasMore(false);
+    setLoading(false);
+    setError(false);
+    setHasNoResults(false);
+    setSelectedItem(null);
+    navigate("/search");
   };
 
   const handleChange = (event) => {
@@ -40,12 +51,20 @@ export default function Searchbar() {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (searchInput !== "") {
+      const formattedInput = searchInput.toLowerCase().split(" ").join("+");
       resetSearch();
       setLoading(true);
-      const formattedInput = searchInput.toLowerCase().split(" ").join("+");
+      navigate(`/search/${formattedInput}`);
+    }
+    
+  };
 
+  useEffect(() => {
+    if (keywords) {
+      setLoading(true);
+      setSearchInput(keywords.replaceAll("+", " "));
       axios
-        .get(`${METAPI}search?q=${formattedInput}`)
+        .get(`${METAPI}search?q=${keywords}`)
         .then(({ data }) => {
           if (data.total === 0) {
             setLoading(false);
@@ -62,17 +81,10 @@ export default function Searchbar() {
           console.log(err);
         });
     }
-    //testing pagination
-    // else {
-    //   setDisplayedIDs(
-    //     searchResults.slice(8 * (pagination + 1), 8 * (pagination + 1) + 8)
-    //   );
-    //   setPagination(pagination + 1);
-    // }
-  };
+  }, [keywords]);
 
   useEffect(() => {
-    if (!searchInput) {
+    if (!searchInput && !keywords) {
       resetSearch();
     }
   }, [searchInput]);
@@ -88,7 +100,7 @@ export default function Searchbar() {
     try {
       const res = await Promise.all(items.map(fetchItemData));
       // remove undefined objects
-      const filteredRes = res.filter((e) => e)
+      const filteredRes = res.filter((e) => e);
       setFetchedItems([...fetchedItems, ...filteredRes]);
       setLoading(false);
     } catch (err) {
@@ -119,7 +131,11 @@ export default function Searchbar() {
                 ? "searchbar__form__input__cancel"
                 : "searchbar__form__input__cancel__active"
             }`}
-            onClick={() => setSearchInput("")}
+            onClick={() => {
+              // navigate("/search");
+              resetSearch();
+              setSearchInput("");
+            }}
           >
             X
           </div>

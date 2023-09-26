@@ -19,14 +19,17 @@ function RouteComponent() {
         <Route path="register" element={<Register />} />
         <Route path="play" element={<Play />} />
         <Route path="random-item" element={<Random />} />
-        <Route path="search" element={<Search />} />
+        <Route path="search">
+          <Route index element={<Search />} />
+          <Route path=":keywords" element={<Search />} />
+        </Route>
         <Route path="user">
           <Route index element={<User />} />
           <Route path="favorites" element={<Favorites />} />
         </Route>
         <Route path="about" element={<About />} />
         <Route path="/not-found" element={<Error />} />
-        <Route path="*" element={<Navigate to="/not-found" />} />
+        {/* <Route path="*" element={<Navigate to="/not-found" />} /> */}
       </Route>
     </Routes>
   );
