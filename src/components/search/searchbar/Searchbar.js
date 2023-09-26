@@ -26,6 +26,13 @@ export default function Searchbar() {
     setHasNoResults,
   } = useSearchProvider();
 
+  const resetSearch = () => {
+    setSearchResults([]);
+    setDisplayedIDs([]);
+    setFetchedItems([]);
+    setPagination(0);
+  };
+
   const handleChange = (event) => {
     setSearchInput(event.target.value);
   };
@@ -33,7 +40,7 @@ export default function Searchbar() {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (searchInput !== "") {
-      setPagination(0);
+      resetSearch();
       setLoading(true);
       const formattedInput = searchInput.toLowerCase().split(" ").join("+");
 
@@ -66,10 +73,7 @@ export default function Searchbar() {
 
   useEffect(() => {
     if (!searchInput) {
-      setSearchResults([]);
-      setDisplayedIDs([]);
-      setFetchedItems([]);
-      setPagination(0);
+      resetSearch();
     }
   }, [searchInput]);
 
@@ -83,7 +87,9 @@ export default function Searchbar() {
   const getItemsData = async (items) => {
     try {
       const res = await Promise.all(items.map(fetchItemData));
-      setFetchedItems([...fetchedItems, ...res]);
+      // remove undefined objects
+      const filteredRes = res.filter((e) => e)
+      setFetchedItems([...fetchedItems, ...filteredRes]);
       setLoading(false);
     } catch (err) {
       return console.log(err);
@@ -92,7 +98,7 @@ export default function Searchbar() {
 
   useEffect(() => {
     if (displayedIDs.length > 0) {
-      getItemsData(displayedIDs);
+      getItemsData(displayedIDs.slice(8 * pagination));
     }
   }, [displayedIDs]);
 
