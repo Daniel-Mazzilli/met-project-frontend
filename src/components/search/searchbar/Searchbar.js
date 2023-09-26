@@ -89,6 +89,9 @@ export default function Searchbar() {
     if (!searchInput && !keywords) {
       resetSearch();
     }
+    if(!searchInput && keywords && searchResults.length){
+      resetSearch();
+    }
   }, [searchInput]);
 
   const fetchItemData = (itemID) => {
