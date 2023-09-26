@@ -11,4 +11,35 @@
          margin-right: 4px;
          }
       }
+
+      &__loading {
+         color: var(--metx-red);
+         display: flex;
+         justify-content: center;
+         margin-top: 20px;
+         
+         &__spinner{
+            animation: spin 1s linear infinite;
+            border: 6px solid var(--metx-light-grey);
+            border-top: 6px solid var(--metx-red);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+         }
+
+         &__logo{
+            width: 100%;
+            animation: counterSpin 1s linear infinite;
+         }
+      }
 }
+
+@keyframes spin {
+   0% { transform: rotate(0deg); }
+   100% { transform: rotate(360deg); }
+ }
+
+@keyframes counterSpin {
+   0% { transform: rotate(360deg); }
+   100% { transform: rotate(0deg); }
+ }

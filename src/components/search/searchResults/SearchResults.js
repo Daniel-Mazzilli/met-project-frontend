@@ -2,6 +2,7 @@ import { useEffect, useState, useRef, useCallback } from "react";
 import { useSearchProvider } from "../../../providers/SearchProvider";
 import ItemSearchResult from "../itemSearchResult/ItemSearchResult.js";
 import { formatItemCount } from "../../../helperFunctions/helperFunctions";
+import darkLogo from "../../../assets/METx_logo_dark.png";
 import "./SearchResults.scss";
 
 export default function SearchResults() {
@@ -29,6 +30,7 @@ export default function SearchResults() {
         if (entries[0].isIntersecting && hasMore) {
           console.log("Visible");
           if (displayedIDs.length !== searchResults.length) {
+            setLoading(true);
             setDisplayedIDs([
               ...displayedIDs,
               ...searchResults.slice(
@@ -42,7 +44,7 @@ export default function SearchResults() {
       });
       if (node) observer.current.observe(node);
     },
-    [fetchedItems]
+    [fetchedItems, loading]
   );
 
   return (
@@ -51,7 +53,7 @@ export default function SearchResults() {
         <div>Explore The Met's Collection</div>
       )}
 
-      {!loading && fetchedItems.length > 0 && (
+      {fetchedItems.length > 0 && (
         <div className="searchresults__items">
           <span>{formatItemCount(searchResults.length)}</span>Total Results
           <div className="searchresults__items__entry">
@@ -72,7 +74,17 @@ export default function SearchResults() {
         </div>
       )}
 
-      {searchInput && loading && "LOADING..."}
+      {searchInput && loading && (
+        <div className="searchresults__loading">
+          <div className="searchresults__loading__spinner">
+            <img
+              className="searchresults__loading__logo"
+              src={darkLogo}
+              alt="logo"
+            />
+          </div>
+        </div>
+      )}
 
       {error && "An Error Occurred"}
     </div>
