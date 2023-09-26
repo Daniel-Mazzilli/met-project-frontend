@@ -19,7 +19,6 @@ function SearchProvider({ children }) {
   const [error, setError] = useState(false);
   const [hasMore, setHasMore] = useState(false);
   const [hasNoResults, setHasNoResults] = useState(false);
-  const [reset, setReset] = useState(false);
 
   useEffect(() => {
     setPagination(0);

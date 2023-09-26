@@ -52,6 +52,9 @@ export default function Searchbar() {
     event.preventDefault();
     if (searchInput !== "") {
       const formattedInput = searchInput.toLowerCase().split(" ").join("+");
+      if(formattedInput === keywords){
+        return
+      }
       resetSearch();
       setLoading(true);
       navigate(`/search/${formattedInput}`);
