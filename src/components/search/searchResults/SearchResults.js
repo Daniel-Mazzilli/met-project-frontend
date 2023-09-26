@@ -3,7 +3,7 @@ import { useSearchProvider } from "../../../providers/SearchProvider";
 import ItemSearchResult from "../itemSearchResult/ItemSearchResult.js";
 import { formatItemCount } from "../../../helperFunctions/helperFunctions";
 import darkLogo from "../../../assets/METx_logo_dark.png";
-import arrowUp from "../../../assets/arrow_up.png";
+import arrowUp from "../../../assets/arrowup.png";
 import "./SearchResults.scss";
 
 export default function SearchResults() {

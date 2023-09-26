@@ -34,22 +34,23 @@
       }
 
       &__top {
-         background-color: var(--metx-mid-grey);
+         background-color: var(--metx-blue);
          width: 60px;
          height: 60px;
          border-radius: 50%;
          display: flex;
+         flex-direction: column;
          justify-content: center;
          align-items: center;
          position:fixed;
-         bottom: 3px;
-         right: 3px;
-         color: var(--metx-red);
-         border: 1px solid var(--metx-dark-grey);
-         opacity: 0.9;
+         bottom: 14px;
+         right: 14px;
+         opacity: 0.85;
+         animation: pulseAnimation 2s infinite;
 
          &__icon {
             width: 90%;
+            // position: absolute;
          }
       }
 }
@@ -62,4 +63,13 @@
 @keyframes counterSpin {
    0% { transform: rotate(360deg); }
    100% { transform: rotate(0deg); }
+ }
+
+ @keyframes pulseAnimation {
+   0% {
+     box-shadow: 0 0 0 0px rgba(113, 113, 225, 0.8);
+   }
+   100% {
+     box-shadow: 0 0 0 15px rgba(113, 113, 225, 0);
+   }
  }
