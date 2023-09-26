@@ -145,11 +145,14 @@ export default function Searchbar() {
         <input
           className={
             searchInput &&
+            keywords &&
             searchInput
               .toLowerCase()
               .replaceAll("+", "")
               .replaceAll(" ", "") !==
               keywords.toLowerCase().replaceAll("+", "").replaceAll(" ", "")
+              ? "searchbar__form__submit"
+              : searchInput && !keywords
               ? "searchbar__form__submit"
               : "searchbar__form__submit inactive"
           }
