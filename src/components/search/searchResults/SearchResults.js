@@ -3,6 +3,7 @@ import { useSearchProvider } from "../../../providers/SearchProvider";
 import ItemSearchResult from "../itemSearchResult/ItemSearchResult.js";
 import { formatItemCount } from "../../../helperFunctions/helperFunctions";
 import darkLogo from "../../../assets/METx_logo_dark.png";
+import arrowUp from "../../../assets/arrow_up.png";
 import "./SearchResults.scss";
 
 export default function SearchResults() {
@@ -20,6 +21,18 @@ export default function SearchResults() {
     fetchedItems,
   } = useSearchProvider();
 
+  const [showTopButton, setShowTopButton] = useState(false);
+
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 600) {
+        setShowTopButton(true);
+      } else {
+        setShowTopButton(false);
+      }
+    });
+  }, []);
+
   const observer = useRef();
   const lastItem = useCallback(
     (node) => {
@@ -28,7 +41,7 @@ export default function SearchResults() {
       if (observer.current) observer.current.disconnect();
       observer.current = new IntersectionObserver((entries) => {
         if (entries[0].isIntersecting && hasMore) {
-          console.log("Visible");
+          // console.log("Visible");
           if (displayedIDs.length !== searchResults.length) {
             setLoading(true);
             setDisplayedIDs([
@@ -87,6 +100,21 @@ export default function SearchResults() {
       )}
 
       {error && "An Error Occurred"}
+
+      {showTopButton && (
+        <div
+          className="searchresults__top"
+          onClick={() => {
+            window.scrollTo({
+              top: 0,
+              left: 0,
+              behavior: "smooth",
+            });
+          }}
+        >
+          <img className="searchresults__top__icon" src={arrowUp} alt="arrow" />
+        </div>
+      )}
     </div>
   );
 }

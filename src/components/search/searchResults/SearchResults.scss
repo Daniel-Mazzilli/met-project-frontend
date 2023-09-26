@@ -32,6 +32,26 @@
             animation: counterSpin 1s linear infinite;
          }
       }
+
+      &__top {
+         background-color: var(--metx-mid-grey);
+         width: 60px;
+         height: 60px;
+         border-radius: 50%;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         position:fixed;
+         bottom: 3px;
+         right: 3px;
+         color: var(--metx-red);
+         border: 1px solid var(--metx-dark-grey);
+         opacity: 0.9;
+
+         &__icon {
+            width: 90%;
+         }
+      }
 }
 
 @keyframes spin {
