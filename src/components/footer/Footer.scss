@@ -2,7 +2,8 @@
     background-color: rgb(228, 228, 228);
     color: var(--metx-dark-grey);
     width: 100vw;
-    // border: 2px solid green;
+    // border-bottom: 0.5px solid var(--metx-black);
+    box-shadow: 0 2px 2px var(--metx-black);
     position: fixed;
     bottom: 0;
     left: 0;
