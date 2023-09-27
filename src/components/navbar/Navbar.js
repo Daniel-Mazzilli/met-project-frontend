@@ -22,7 +22,15 @@ export default function Navbar() {
     { val: "About", route: "about" },
   ]);
 
-  //add function to block scroll when navmenu open?
+  const closeMenu = () => {
+    if (isMenuOpen) {
+      setIsMenuClosing(true);
+      setTimeout(() => setIsMenuOpen(false), "795");
+    } else {
+      setIsMenuOpen(true);
+      setIsMenuClosing(false);
+    }
+  }
 
   return (
     <nav className="navbar">
@@ -44,15 +52,7 @@ export default function Navbar() {
       </Link>
       <img
         className="navbar__toggle hover__pointer"
-        onClick={() => {
-          if (isMenuOpen) {
-            setIsMenuClosing(true);
-            setTimeout(() => setIsMenuOpen(false), "795");
-          } else {
-            setIsMenuOpen(true);
-            setIsMenuClosing(false);
-          }
-        }}
+        onClick={closeMenu}
         src={isMenuOpen && !isMenuClosing ? CloseIcon : Hamburger}
         alt="hamburger menu icon"
       />
@@ -94,7 +94,14 @@ export default function Navbar() {
           </div>
         </div>
       )}
-      {isMenuOpen && <div className={isMenuClosing ? "navbar__cover__inactive": "navbar__cover"}></div>}
+      {isMenuOpen && (
+        <div
+          className={
+            isMenuClosing ? "navbar__cover__inactive" : "navbar__cover"
+          }
+          onClick={closeMenu}
+        ></div>
+      )}
     </nav>
   );
 }
