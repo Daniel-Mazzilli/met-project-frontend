@@ -38,13 +38,18 @@
 
         &__icons {
             display: flex;
-            align-items: center;
             justify-content: space-around;
             width: 40%;
-    
-            &__icon{
-            height: 25px; 
-            }  
+
+            &__link {
+                display: flex;
+                align-items: center;
+
+                &__icon{
+                    height: 25px; 
+                }   
+            }
+            
         }
     }
 

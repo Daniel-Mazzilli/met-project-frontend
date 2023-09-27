@@ -8,9 +8,7 @@ import "./Footer.scss";
 export default function Footer() {
   const { allItemIDs, isMenuClosing } = useContextProvider();
   return (
-    <footer className={isMenuClosing? "footer nav-close" : "footer nav-open"}>
-      
-
+    <footer className={isMenuClosing ? "footer nav-close" : "footer nav-open"}>
       <div className="footer__items">
         {/* <img className="footer__items__logo" src={Logo} alt="logo" /> */}
         Item Count:
@@ -23,10 +21,27 @@ export default function Footer() {
 
       <div className="footer__dev">
         <div>Daniel Mazzilli</div>
-      <div className="footer__dev__icons">
-        <img className="footer__dev__icons__icon" src={githubLogo} alt="github"/>
-      <img className="footer__dev__icons__icon" src={linkedInLogo} alt="linkedin"/>
-      </div>
+        <div className="footer__dev__icons">
+          <a href="https://github.com/Daniel-Mazzilli" target="_blank"
+          className="footer__dev__icons__link">
+            <img
+              className="footer__dev__icons__link__icon"
+              src={githubLogo}
+              alt="github"
+            />
+          </a>
+          <a
+            href="https://www.linkedin.com/in/mazzilli-daniel/"
+            target="_blank"
+            className="footer__dev__icons__link"
+          >
+            <img
+              className="footer__dev__icons__link__icon"
+              src={linkedInLogo}
+              alt="linkedin"
+            />
+          </a>
+        </div>
       </div>
     </footer>
   );
