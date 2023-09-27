@@ -49,14 +49,14 @@
          animation: pulseAnimation 2s infinite;
 
          &__icon {
-            width: 90%;
+            width: 75%;
             position: relative;
             top: 5px;
          }
 
          &__text {
             position: relative;
-            top: -12px;
+            top: -8px;
             color: var(--metx-light-grey);
             font-size: 18px;
          }
