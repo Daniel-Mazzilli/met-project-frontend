@@ -32,7 +32,8 @@
         background-color: var(--metx-light-grey);
         position: absolute;
         top: 5.65vh;
-        left:0;
+        // left:0;
+        right: 0;
         max-width: 100vw;
         color: var(--metx-black);
 
@@ -63,10 +64,19 @@
 }
 
 @keyframes nav_enter {
-    0%   {left: -100vw}
-    100% {left: 0}
+    0%   {right: -100vw}
+    100% {right: 0}
 }
 @keyframes nav_out {
-    0%   {left: 0}
-    100% {left: -100vw}
+    0%   {right: 0}
+    100% {right: -100vw}
 }
+
+// @keyframes nav_enter {
+//     0%   {left: -100vw}
+//     100% {left: 0}
+// }
+// @keyframes nav_out {
+//     0%   {left: 0}
+//     100% {left: -100vw}
+// }

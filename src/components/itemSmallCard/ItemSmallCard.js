@@ -1,22 +1,11 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
+import { useState } from "react";
 import noimage from "../../assets/no-image.png";
 import "./ItemSmallCard.scss";
 
-export default function ({ highlight, showMore, setShowMore }) {
-  const API = process.env.REACT_APP_MET_API_URL;
-  // const itemID = "463315";
-  // const itemID = "23367";
+export default function () {
 
   const [item, setItem] = useState({});
-  // const [showMore, setShowMore] = useState(false);
-
-  useEffect(() => {
-    axios
-      .get(`${API}/objects/${highlight}`)
-      .then(({ data }) => setItem(data))
-      .catch((err) => console.log(err));
-  }, [highlight]);
+  const [showMore, setShowMore] = useState(false);
 
   return (
     <div className="smallCard">
