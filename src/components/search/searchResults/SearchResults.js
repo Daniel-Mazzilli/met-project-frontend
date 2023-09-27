@@ -103,7 +103,7 @@ export default function SearchResults() {
 
       {showTopButton && (
         <div
-          className="searchresults__top"
+          className="searchresults__top hover__pointer"
           onClick={() => {
             window.scrollTo({
               top: 0,

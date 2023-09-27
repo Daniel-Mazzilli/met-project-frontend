@@ -27,7 +27,7 @@ export default function Navbar() {
   return (
     <nav className="navbar">
       <img
-        className="navbar__logo"
+        className="navbar__logo hover__pointer"
         src={Logo}
         alt="logo"
         onClick={() => {
@@ -43,7 +43,7 @@ export default function Navbar() {
         METxplorer
       </Link>
       <img
-        className="navbar__toggle"
+        className="navbar__toggle hover__pointer"
         onClick={() => {
           if (isMenuOpen) {
             setIsMenuClosing(true);

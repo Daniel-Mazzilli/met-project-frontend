@@ -5,6 +5,10 @@
     text-align: center;
     margin-top: 10px;
     margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
     &__img{
         max-width: 100%;
@@ -19,6 +23,7 @@
         overflow: auto;
         padding: 1px 2px;
         font-weight: 600;
+        width: fit-content;
     }
     
 }

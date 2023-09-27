@@ -134,7 +134,7 @@ export default function Searchbar() {
             className={`${
               !searchInput
                 ? "searchbar__form__input__cancel"
-                : "searchbar__form__input__cancel__active"
+                : "searchbar__form__input__cancel__active hover__pointer"
             }`}
             onClick={() => {
               // navigate("/search");

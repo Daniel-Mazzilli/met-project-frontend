@@ -40,13 +40,16 @@
             }
         }
 
-        
-
         &__submit {
             all: unset;
             background-color: var(--metx-blue);
             color: var(--metx-light-grey);
             text-align: center;
+        }
+
+        &__submit:hover {
+            color: rgb(34, 34, 77);
+            cursor: pointer;
         }
 
         
@@ -60,6 +63,11 @@
     & .inactive {
         background-color: rgb(161, 161, 161);
         // background-color: var(--metx-dark-grey);
+    }
+
+    & .inactive:hover {
+        cursor: default;
+        color: var(--metx-light-grey);
     }
     
 }
