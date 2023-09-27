@@ -25,7 +25,7 @@ export default function SearchResults() {
 
   useEffect(() => {
     window.addEventListener("scroll", () => {
-      if (window.scrollY > 600) {
+      if (window.scrollY > 100) {
         setShowTopButton(true);
       } else {
         setShowTopButton(false);
@@ -113,6 +113,7 @@ export default function SearchResults() {
           }}
         >
           <img className="searchresults__top__icon" src={arrowUp} alt="arrow" />
+          <div className="searchresults__top__text">TOP</div>
         </div>
       )}
     </div>
