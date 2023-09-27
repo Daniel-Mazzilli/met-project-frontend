@@ -5,6 +5,8 @@ export default function Home() {
         <div>
             IN DEVELOPMENT
             <br/>
+            building mobile first
+            <br/>
             <br/>
             currently working on the <Link to="search" style={{color: "blue"}}>search</Link>
         </div>
