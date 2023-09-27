@@ -94,6 +94,7 @@ export default function Navbar() {
           </div>
         </div>
       )}
+      {isMenuOpen && <div className={isMenuClosing ? "navbar__cover__inactive": "navbar__cover"}></div>}
     </nav>
   );
 }
