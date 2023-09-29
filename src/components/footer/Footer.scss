@@ -2,7 +2,7 @@
     background-color: rgb(228, 228, 228);
     color: var(--metx-dark-grey);
     width: 75vw;
-    border-bottom: 1px solid var(--metx-dark-grey);
+    border-bottom: 1px solid var(--metx-mid-grey);
     // box-shadow: 0 2px 2px var(--metx-black);
     position: fixed;
     bottom: 0;
@@ -15,7 +15,7 @@
 
     &__items {
         background-color: var(--metx-light-grey);
-        border-bottom: 1px solid var(--metx-dark-grey);
+        border-bottom: 1px solid var(--metx-mid-grey);
         padding-left: 6vw;
         font-size: 24px;
         padding-bottom: 20px;
