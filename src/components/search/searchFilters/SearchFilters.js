@@ -27,7 +27,7 @@ export default function SearchFilters() {
           <div>
             <select>
               <option>
-                Search within: any
+                Search within: all fields
               </option>
               <option>title</option>
               <option>tags</option>

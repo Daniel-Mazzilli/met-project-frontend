@@ -16,7 +16,7 @@ export default function Navbar() {
   const [navLinks, setNavLinks] = useState([
     { val: "Login", route: "login" },
     { val: "Play", route: "play" },
-    { val: "Search", route: "search" },
+    { val: "Explore", route: "search" },
     { val: "Favorites", route: "user/favorites" },
     { val: "Random", route: "random-item" },
     { val: "About", route: "about" },
