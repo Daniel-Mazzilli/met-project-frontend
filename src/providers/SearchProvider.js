@@ -19,6 +19,15 @@ function SearchProvider({ children }) {
   const [error, setError] = useState(false);
   const [hasMore, setHasMore] = useState(false);
   const [hasNoResults, setHasNoResults] = useState(false);
+  const [queryFilters, setQueryFilters] = useState({
+    isHighlight: false,
+    title: false,
+    tags: false,
+    departmentId: "",
+    isOnView: "",
+    artistOrCulture: false,
+    hasImages: "",
+  });
 
   useEffect(() => {
     setPagination(0);
@@ -49,6 +58,8 @@ function SearchProvider({ children }) {
         setHasMore,
         hasNoResults,
         setHasNoResults,
+        queryFilters,
+        setQueryFilters,
       }}
     >
       {children}

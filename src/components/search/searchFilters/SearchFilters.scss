@@ -41,5 +41,29 @@
             text-align: center;
             margin-bottom: 8px;
         }
+
+        &__radio {
+            border: 1px solid var(--metx-mid-grey);
+            border-radius: 6px;
+            padding: 2px;
+            background-color: #ffff;
+            margin-bottom: 8px;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+
+            & input {
+                display: none;
+            }
+
+            &__selected {
+                // border: 1px solid red;
+                background-color: var(--metx-mid-grey);
+                border-radius: 6px;
+                padding: 0 6px;
+                color: var(--metx-light-grey);
+                // font-weight: 600;
+                // text-transform: uppercase;
+            }
+        }
     }
 }

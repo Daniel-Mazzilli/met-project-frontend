@@ -1,9 +1,31 @@
 import { useState } from "react";
+import { useSearchProvider } from "../../../providers/SearchProvider.js";
+import { departments } from "../../../data/departments";
 import filtersArrow from "../../../assets/filters_arrow.png";
 import "./SearchFilters.scss";
 
 export default function SearchFilters() {
   const [filtersOpen, setFiltersOpen] = useState(false);
+  const { setQueryFilters, queryFilters } = useSearchProvider();
+  const filterChange = (event) => {
+    if (event.target.name === "isOnView" || event.target.name === "hasImages") {
+      return setQueryFilters({
+        ...queryFilters,
+        [event.target.name]: event.target.value,
+      });
+    }
+    if (event.target.id === "isHighlight") {
+      return setQueryFilters({
+        ...queryFilters,
+        [event.target.id]: event.target.checked,
+      });
+    }
+    return setQueryFilters({
+      ...queryFilters,
+      [event.target.id]: event.target.value,
+    });
+  };
+
   return (
     <div className="searchFilters">
       <div
@@ -26,38 +48,142 @@ export default function SearchFilters() {
         <div className="searchFilters__filters">
           <div>
             <select>
-              <option>
-                Search within: all fields
-              </option>
+              <option>Search within: all fields</option>
               <option>title</option>
               <option>tags</option>
               <option>artist or culture</option>
-              <option>medium (paintings, ceramics, etc)</option>
             </select>
           </div>
 
           <div>
-            <select>
-              <option>Department</option>
-              <option>roman</option>
-              <option>european painting</option>
-              <option>to be added more</option>
+            <select id="departmentId" onChange={filterChange}>
+              <option value="">Department</option>
+              {departments.map(({ departmentId, displayName }) => (
+                <option key={departmentId} value={departmentId}>
+                  {displayName}
+                </option>
+              ))}
             </select>
+          </div>
+
+          <div className="searchFilters__filters__radio">
+            <input
+              type="radio"
+              id="on-view"
+              name="isOnView"
+              value={true}
+              onChange={filterChange}
+            />
+            <label
+              className={
+                queryFilters.isOnView === "true"
+                  ? "searchFilters__filters__radio__selected"
+                  : ""
+              }
+              htmlFor="on-view"
+            >
+              on view
+            </label>
+            <input
+              type="radio"
+              id="not-on-view"
+              name="isOnView"
+              value={false}
+              onChange={filterChange}
+            />
+            <label
+              className={
+                queryFilters.isOnView === "false"
+                  ? "searchFilters__filters__radio__selected"
+                  : ""
+              }
+              htmlFor="not-on-view"
+            >
+              not on view
+            </label>
+            <input
+              type="radio"
+              id="not-specified"
+              name="isOnView"
+              value=""
+              onChange={filterChange}
+              checked={queryFilters.isOnView === ""}
+            />
+            <label
+              className={
+                queryFilters.isOnView === ""
+                  ? "searchFilters__filters__radio__selected"
+                  : ""
+              }
+              htmlFor="not-specified"
+            >
+              unspecified
+            </label>
+          </div>
+
+          <div className="searchFilters__filters__radio">
+            <input
+              type="radio"
+              id="has-images"
+              name="hasImages"
+              value={true}
+              onChange={filterChange}
+            />
+            <label
+              className={
+                queryFilters.hasImages === "true"
+                  ? "searchFilters__filters__radio__selected"
+                  : ""
+              }
+              htmlFor="has-images"
+            >
+              has images
+            </label>
+            <input
+              type="radio"
+              id="no-images"
+              name="hasImages"
+              value={false}
+              onChange={filterChange}
+            />
+            <label
+              className={
+                queryFilters.hasImages === "false"
+                  ? "searchFilters__filters__radio__selected"
+                  : ""
+              }
+              htmlFor="no-images"
+            >
+              no images
+            </label>
+            <input
+              type="radio"
+              id="not-specified-images"
+              name="hasImages"
+              value=""
+              onChange={filterChange}
+              checked={queryFilters.hasImages === ""}
+            />
+            <label
+              className={
+                queryFilters.hasImages === ""
+                  ? "searchFilters__filters__radio__selected"
+                  : ""
+              }
+              htmlFor="not-specified-images"
+            >
+              unspecified
+            </label>
           </div>
 
           <div>
             <label>museum highlight</label>
-            <input type="checkbox" />
-          </div>
-
-          <div>
-            <label>on view</label>
-            <input type="checkbox" />
-          </div>
-
-          <div>
-            <label>has images</label>
-            <input type="checkbox" />
+            <input
+              id="isHighlight"
+              type="checkbox"
+              onChange={filterChange}
+              checked={queryFilters.isHighlight}
+            />
           </div>
         </div>
       )}
