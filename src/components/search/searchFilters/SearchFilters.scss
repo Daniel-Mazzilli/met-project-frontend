@@ -5,6 +5,7 @@
     background-color: var(--metx-light-grey);
     padding: 0 10px;
     font-size: 18px;
+    color: var(--metx-black);
 
     &__header {
         font-weight: 600;
@@ -59,7 +60,30 @@
                 background-color: #ffff;
                 border-radius: 6px;
                 width: 100%;
-                color: var(--metx-dark-grey);
+                color: var(--metx-black);
+            }
+        }
+
+        &__checkbox {
+            display: grid;
+            color: var(--metx-mid-grey);
+            border: 1px solid var(--metx-mid-grey);
+            border-radius: 6px;
+            margin-bottom: 8px;
+
+            & input {
+                display: none;
+            }
+
+            &__checked {
+                width: 100%;
+                background-color: #ffff;
+                border-radius: 6px;
+                color: var(--metx-black);
+            }
+
+            &__unchecked {
+                width: 100%;
             }
         }
     }

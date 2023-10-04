@@ -117,7 +117,7 @@ export default function SearchFilters() {
               }
               htmlFor="not-specified"
             >
-              unspecified
+              all results
             </label>
           </div>
 
@@ -172,12 +172,12 @@ export default function SearchFilters() {
               }
               htmlFor="not-specified-images"
             >
-              unspecified
+              all results
             </label>
           </div>
 
-          <div>
-            <label>museum highlight</label>
+          <div className="searchFilters__filters__checkbox">
+            <label className={queryFilters.isHighlight ? "searchFilters__filters__checkbox__checked" : "searchFilters__filters__checkbox__unchecked"} htmlFor="isHighlight">Museum Highlights Only</label>
             <input
               id="isHighlight"
               type="checkbox"
