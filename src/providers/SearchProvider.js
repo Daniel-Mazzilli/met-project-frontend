@@ -21,13 +21,12 @@ function SearchProvider({ children }) {
   const [hasNoResults, setHasNoResults] = useState(false);
   const [queryFilters, setQueryFilters] = useState({
     isHighlight: false,
-    title: false,
-    tags: false,
     departmentId: "",
     isOnView: "",
-    artistOrCulture: false,
     hasImages: "",
+    searchWithin: {},
   });
+  const [queryParameters, setQueryParameters] = useState("");
 
   useEffect(() => {
     setPagination(0);
@@ -60,6 +59,8 @@ function SearchProvider({ children }) {
         setHasNoResults,
         queryFilters,
         setQueryFilters,
+        queryParameters,
+        setQueryParameters,
       }}
     >
       {children}

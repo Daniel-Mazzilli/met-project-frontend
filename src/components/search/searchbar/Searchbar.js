@@ -30,9 +30,11 @@ export default function Searchbar() {
     setHasNoResults,
     setSelectedItem,
     queryFilters,
+    queryParameters,
+    setQueryParameters,
   } = useSearchProvider();
 
-  const resetSearch = () => {
+  const resetSearch = (forQueryParam = false) => {
     setSearchResults([]);
     setDisplayedIDs([]);
     setFetchedItems([]);
@@ -42,7 +44,10 @@ export default function Searchbar() {
     setError(false);
     setHasNoResults(false);
     setSelectedItem(null);
-    navigate("/search");
+    if(!forQueryParam){
+      navigate("/search");
+    }
+    
   };
 
   const handleChange = (event) => {
@@ -62,16 +67,30 @@ export default function Searchbar() {
     }
   };
 
-  useEffect(()=>{
-    console.log("test")
-  }, [queryFilters])
+  useEffect(() => {
+    let queryParamStr = "";
+    for (let key in queryFilters) {
+      if (key === "searchWithin") {
+        for (let innerKey in queryFilters[key]) {
+          const objKey = queryFilters[key];
+          queryParamStr += `${innerKey}=true&`;
+        }
+      } else {
+        queryParamStr += `${key}=${queryFilters[key]}&`;
+      }
+    }
+
+    resetSearch(true);
+
+    setQueryParameters(queryParamStr);
+  }, [queryFilters]);
 
   useEffect(() => {
     if (keywords) {
       setLoading(true);
       setSearchInput(keywords.replaceAll("+", " "));
       axios
-        .get(`${METAPI}search?q=${keywords}`)
+        .get(`${METAPI}search?${queryParameters}q=${keywords}`)
         .then(({ data }) => {
           if (data.total === 0) {
             setLoading(false);
@@ -88,13 +107,13 @@ export default function Searchbar() {
           console.log(err);
         });
     }
-  }, [keywords]);
+  }, [keywords, queryParameters]);
 
   useEffect(() => {
     if (!searchInput && !keywords) {
       resetSearch();
     }
-    if(!searchInput && keywords && searchResults.length){
+    if (!searchInput && keywords && searchResults.length) {
       resetSearch();
     }
   }, [searchInput]);

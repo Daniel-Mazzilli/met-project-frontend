@@ -8,18 +8,33 @@ export default function SearchFilters() {
   const [filtersOpen, setFiltersOpen] = useState(false);
   const { setQueryFilters, queryFilters } = useSearchProvider();
   const filterChange = (event) => {
+    //radio input
     if (event.target.name === "isOnView" || event.target.name === "hasImages") {
       return setQueryFilters({
         ...queryFilters,
         [event.target.name]: event.target.value,
       });
     }
+
+    //checkbox input
     if (event.target.id === "isHighlight") {
       return setQueryFilters({
         ...queryFilters,
         [event.target.id]: event.target.checked,
       });
     }
+
+    if (event.target.id === "searchWithin") {
+      if (event.target.value === "") {
+        return setQueryFilters({ ...queryFilters, [event.target.id]: {} });
+      }
+      delete queryFilters[event.target.id];
+      return setQueryFilters({
+        ...queryFilters,
+        [event.target.id]: { [event.target.value]: true },
+      });
+    }
+
     return setQueryFilters({
       ...queryFilters,
       [event.target.id]: event.target.value,
@@ -47,11 +62,11 @@ export default function SearchFilters() {
       {filtersOpen && (
         <div className="searchFilters__filters">
           <div>
-            <select>
-              <option>Search within: all fields</option>
-              <option>title</option>
-              <option>tags</option>
-              <option>artist or culture</option>
+            <select id="searchWithin" onChange={filterChange}>
+              <option value="">Search within: all fields</option>
+              <option value="title">title</option>
+              <option value="tags">tags</option>
+              <option value="artistOrCulture">artist or culture</option>
             </select>
           </div>
 
@@ -177,7 +192,16 @@ export default function SearchFilters() {
           </div>
 
           <div className="searchFilters__filters__checkbox">
-            <label className={queryFilters.isHighlight ? "searchFilters__filters__checkbox__checked" : "searchFilters__filters__checkbox__unchecked"} htmlFor="isHighlight">Museum Highlights Only</label>
+            <label
+              className={
+                queryFilters.isHighlight
+                  ? "searchFilters__filters__checkbox__checked"
+                  : "searchFilters__filters__checkbox__unchecked"
+              }
+              htmlFor="isHighlight"
+            >
+              Museum Highlights Only
+            </label>
             <input
               id="isHighlight"
               type="checkbox"
