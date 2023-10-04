@@ -29,6 +29,7 @@ export default function Searchbar() {
     hasNoResults,
     setHasNoResults,
     setSelectedItem,
+    queryFilters,
   } = useSearchProvider();
 
   const resetSearch = () => {
@@ -60,6 +61,10 @@ export default function Searchbar() {
       navigate(`/search/${formattedInput}`);
     }
   };
+
+  useEffect(()=>{
+    console.log("test")
+  }, [queryFilters])
 
   useEffect(() => {
     if (keywords) {
