@@ -1,9 +1,12 @@
 import { useEffect, useState, useRef, useCallback } from "react";
 import { useSearchProvider } from "../../../providers/SearchProvider";
 import ItemSearchResult from "../itemSearchResult/ItemSearchResult.js";
+import SuggestedSearchCard from "../suggestedSearchCard/SuggestedSearchCard";
 import { formatItemCount } from "../../../helperFunctions/helperFunctions";
+import { suggestedSearches } from "../../../data/suggestedSearches";
 import darkLogo from "../../../assets/METx_logo_dark.png";
 import arrowUp from "../../../assets/arrowup.png";
+import noResults from "../../../assets/no-results.png";
 import "./SearchResults.scss";
 
 export default function SearchResults() {
@@ -19,6 +22,7 @@ export default function SearchResults() {
     searchInput,
     hasMore,
     fetchedItems,
+    hasNoResults,
   } = useSearchProvider();
 
   const [showTopButton, setShowTopButton] = useState(false);
@@ -62,8 +66,26 @@ export default function SearchResults() {
 
   return (
     <div className="searchresults">
-      {!loading && !searchResults.length && (
-        <div>Explore The Met's Collection</div>
+      {!loading && !searchResults.length && !hasNoResults && (
+        <div className="searchresults__suggested">
+          <div className="searchresults__suggested__header">Explore The Met's Collection</div>
+          <div className="searchresults__suggested__layout">
+          {suggestedSearches.map(({ name, img }) => (
+            <SuggestedSearchCard title={name} imgLink={img} />
+          ))}
+          </div>
+        </div>
+      )}
+
+      {hasNoResults && (
+        <div className="searchresults__noresults">
+          <img
+            className="searchresults__noresults__icon"
+            src={noResults}
+            alt="no results"
+          />
+          <div>No search results.</div>
+        </div>
       )}
 
       {searchResults.length > 0 && fetchedItems.length > 0 && (

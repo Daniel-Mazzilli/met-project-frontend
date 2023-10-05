@@ -1,0 +1,11 @@
+.suggestedSearches {
+    color: var(--metx-blue);
+    border: 1px solid var(--metx-blue);
+    border-radius: 6px;
+    background-color: var(--metx-light-grey);
+    height: 100%;
+    margin: 2px;
+    &__img {
+        width: 45vw;
+    }
+}

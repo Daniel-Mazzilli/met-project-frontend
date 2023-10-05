@@ -3,6 +3,28 @@
    text-align: center;
    font-size: 22px;
 
+      &__noresults {
+         &__icon {
+            height: 100px;
+            width: 100px;
+         }
+      }
+
+      &__suggested {
+         &__header {
+            font-weight: 600;
+            margin-top: 10px;
+            margin-bottom: 10px;
+         }
+         &__layout{
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            // grid-template-rows: 1fr 1fr;
+            align-items: center;
+            gap: 2px;
+         }
+      }
+
       &__items {
          // font-size: 20px; 
          
