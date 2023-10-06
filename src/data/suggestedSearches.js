@@ -16,7 +16,7 @@ const suggestedSearches = [
     img: "https://images.metmuseum.org/CRDImages/is/web-large/sf1996-238-2r.jpg",
   },
   {
-    name: "Jacques Louis David",
+    name: "Jacques-Louis David",
     img: "https://images.metmuseum.org/CRDImages/ep/web-large/DP-13139-001.jpg",
   },
   {

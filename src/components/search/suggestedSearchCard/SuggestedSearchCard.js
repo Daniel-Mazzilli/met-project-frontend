@@ -1,10 +1,15 @@
-import { useSearchProvider } from "../../../providers/SearchProvider";
+import { useNavigate } from "react-router-dom";
 import "./SuggestedSearchCard.scss";
 
 export default function SuggestedSearchCard({ title, imgLink }) {
-  const { setSearchInput } = useSearchProvider();
+  const navigate = useNavigate();
   return (
-    <div className="suggestedSearches" onClick={() => setSearchInput(title)}>
+    <div
+      className="suggestedSearches"
+      onClick={() =>
+        navigate(`/search/${title.toLowerCase().replaceAll(" ", "+")}`)
+      }
+    >
       <div className="suggestedSearches__title">{title}</div>
       <div className="suggestedSearches__imgbox">
         <img
