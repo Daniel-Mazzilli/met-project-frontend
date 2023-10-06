@@ -3,10 +3,10 @@ import "./SuggestedSearchCard.scss";
 export default function SuggestedSearchCard({ title, imgLink }) {
   return (
     <div className="suggestedSearches">
-      <div>
-        <div className="suggestedSearches__name">{title}</div>
+      <div className="suggestedSearches__title">{title}</div>
+      <div className="suggestedSearches__imgbox">
         <img
-          className="suggestedSearches__img"
+          className="suggestedSearches__imgbox__img"
           src={imgLink}
           alt={`${title} preview`}
         />

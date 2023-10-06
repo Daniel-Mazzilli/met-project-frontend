@@ -1,11 +1,19 @@
 .suggestedSearches {
-    color: var(--metx-blue);
-    border: 1px solid var(--metx-blue);
     border-radius: 6px;
     background-color: var(--metx-light-grey);
-    height: 100%;
-    margin: 2px;
-    &__img {
-        width: 45vw;
+    // background-image: linear-gradient(to bottom right, var(--metx-light-grey), var(--metx-blue));
+    
+    &__title {
+        font-size: 18px;
+        color: var(--metx-blue);
+    }
+
+    &__imgbox {
+        height: 20vh;
+        padding: 3px;
+        &__img {
+            height: 100%;
+            border-radius: 6px;
+        }
     }
 }
