@@ -123,7 +123,7 @@ export default function SearchResults() {
 
       {error && "An Error Occurred"}
 
-      {showTopButton && (
+      {showTopButton && searchResults.length > 0 && (
         <div
           className="searchresults__top hover__pointer"
           onClick={() => {

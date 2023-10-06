@@ -1,8 +1,10 @@
+import { useSearchProvider } from "../../../providers/SearchProvider";
 import "./SuggestedSearchCard.scss";
 
 export default function SuggestedSearchCard({ title, imgLink }) {
+  const { setSearchInput } = useSearchProvider();
   return (
-    <div className="suggestedSearches">
+    <div className="suggestedSearches" onClick={() => setSearchInput(title)}>
       <div className="suggestedSearches__title">{title}</div>
       <div className="suggestedSearches__imgbox">
         <img
