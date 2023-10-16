@@ -5,8 +5,7 @@ import filtersArrow from "../../../assets/filters_arrow.png";
 import "./SearchFilters.scss";
 
 export default function SearchFilters() {
-  const [filtersOpen, setFiltersOpen] = useState(false);
-  const { setQueryFilters, queryFilters } = useSearchProvider();
+  const { setQueryFilters, queryFilters, filtersOpen, setFiltersOpen } = useSearchProvider();
   const filterChange = (event) => {
     //radio input
     if (event.target.name === "isOnView" || event.target.name === "hasImages") {
@@ -136,7 +135,8 @@ export default function SearchFilters() {
             </label>
           </div>
 
-          <div className="searchFilters__filters__radio">
+          {/* has images filter on API has issues - need to inquire with API */}
+          {/* <div className="searchFilters__filters__radio">
             <input
               type="radio"
               id="has-images"
@@ -189,7 +189,7 @@ export default function SearchFilters() {
             >
               all results
             </label>
-          </div>
+          </div> */}
 
           <div className="searchFilters__filters__checkbox">
             <label

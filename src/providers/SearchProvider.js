@@ -19,6 +19,7 @@ function SearchProvider({ children }) {
   const [error, setError] = useState(false);
   const [hasMore, setHasMore] = useState(false);
   const [hasNoResults, setHasNoResults] = useState(false);
+  const [filtersOpen, setFiltersOpen] = useState(false);
   const [queryFilters, setQueryFilters] = useState({
     isHighlight: false,
     departmentId: "",
@@ -61,6 +62,8 @@ function SearchProvider({ children }) {
         setQueryFilters,
         queryParameters,
         setQueryParameters,
+        filtersOpen,
+        setFiltersOpen
       }}
     >
       {children}

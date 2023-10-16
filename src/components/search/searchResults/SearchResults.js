@@ -70,8 +70,8 @@ export default function SearchResults() {
         <div className="searchresults__suggested">
           <div className="searchresults__suggested__header">Explore The Met's Collection</div>
           <div className="searchresults__suggested__layout">
-          {suggestedSearches.map(({ name, img }) => (
-            <SuggestedSearchCard title={name} imgLink={img} />
+          {suggestedSearches.map(({ name, img, id }) => (
+            <SuggestedSearchCard key={id} title={name} imgLink={img} />
           ))}
           </div>
         </div>

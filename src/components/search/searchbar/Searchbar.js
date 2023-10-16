@@ -32,6 +32,7 @@ export default function Searchbar() {
     queryFilters,
     queryParameters,
     setQueryParameters,
+    setFiltersOpen,
   } = useSearchProvider();
 
   const resetSearch = (forQueryParam = false) => {
@@ -57,6 +58,7 @@ export default function Searchbar() {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (searchInput !== "") {
+      setFiltersOpen(false);
       const formattedInput = searchInput.toLowerCase().split(" ").join("+");
       if (formattedInput === keywords) {
         return;
