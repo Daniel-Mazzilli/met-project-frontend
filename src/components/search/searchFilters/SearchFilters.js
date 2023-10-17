@@ -1,11 +1,14 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useSearchProvider } from "../../../providers/SearchProvider.js";
 import { departments } from "../../../data/departments";
 import filtersArrow from "../../../assets/filters_arrow.png";
 import "./SearchFilters.scss";
 
 export default function SearchFilters() {
-  const { setQueryFilters, queryFilters, filtersOpen, setFiltersOpen } = useSearchProvider();
+  const [showReset, setShowReset] = useState(false);
+  const { setQueryFilters, queryFilters, filtersOpen, setFiltersOpen } =
+    useSearchProvider();
+
   const filterChange = (event) => {
     //radio input
     if (event.target.name === "isOnView" || event.target.name === "hasImages") {
@@ -40,22 +43,62 @@ export default function SearchFilters() {
     });
   };
 
+  useEffect(() => {
+    const { isHighlight, departmentId, isOnView, hasImages, searchWithin } =
+      queryFilters;
+
+    const cond1 = isHighlight !== false;
+    const cond2 = departmentId !== "";
+    const cond3 = isOnView !== "";
+    const cond4 = hasImages !== "";
+    const cond5 = Object.keys(searchWithin).length;
+
+    if (cond1 || cond2 || cond3 || cond4 || cond5) {
+      setShowReset(true);
+    } else {
+      setShowReset(false);
+    }
+  }, [queryFilters]);
+
+  const resetFilters = () => {
+    setQueryFilters({
+      isHighlight: false,
+      departmentId: "",
+      isOnView: "",
+      hasImages: "",
+      searchWithin: {},
+    });
+  };
+
   return (
     <div className="searchFilters">
-      <div
-        className="searchFilters__header"
-        onClick={() => setFiltersOpen(!filtersOpen)}
-      >
-        Filters
-        <img
-          className={
-            filtersOpen
-              ? "searchFilters__header__arrow"
-              : "searchFilters__header__arrowFlip"
-          }
-          src={filtersArrow}
-          alt="filter arrow"
-        />
+      <div className="searchFilters__header">
+        <div
+          className="searchFilters__header__text"
+          onClick={() => setFiltersOpen(!filtersOpen)}
+        >
+          Filters
+        </div>
+        <div className="searchFilters__header__right">
+          {showReset && (
+            <button
+              className="searchFilters__header__right__reset"
+              onClick={resetFilters}
+            >
+              RESET
+            </button>
+          )}
+          <img
+            className={
+              filtersOpen
+                ? "searchFilters__header__right__arrow"
+                : "searchFilters__header__right__arrowFlip"
+            }
+            src={filtersArrow}
+            alt="filter arrow"
+            onClick={() => setFiltersOpen(!filtersOpen)}
+          />
+        </div>
       </div>
 
       {filtersOpen && (

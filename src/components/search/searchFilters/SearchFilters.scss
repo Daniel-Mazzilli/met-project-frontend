@@ -14,14 +14,30 @@
         justify-content: space-between;
         align-items: center;
 
-        &__arrow {
-            height: 30px;
+        &__text{
+            width: 100%;
+            text-align: left;
         }
+        
+        &__right{
+            display: flex;
+            &__reset {
+                all: unset;
+                color: var(--metx-blue);
+                padding: 0 14px;
+                font-weight: 400;
+            }
 
-        &__arrowFlip {
-            transform: rotate(180deg);
-            height: 30px;
+            &__arrow {
+                height: 30px;
+            }
+
+            &__arrowFlip {
+                transform: rotate(180deg);
+                height: 30px;
+            } 
         }
+        
     }
 
     &__filters {
